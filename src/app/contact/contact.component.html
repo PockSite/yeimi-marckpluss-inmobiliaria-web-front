@@ -1,0 +1,47 @@
+<!-- 8. CONTÁCTAME -->
+<div class="contact-section" id="contacto">
+  <h2 class="section-title2">Contáctame</h2>
+  <div class="contact-container">
+    <div class="contact-info">
+      <h3>¿Tienes un proyecto en mente?</h3>
+      <p>Estoy disponible para nuevas oportunidades y colaboraciones. ¡Hablemos!</p>
+
+      <div class="contact-methods">
+        <div class="contact-method" *ngFor="let method of contactMethods">
+          <i [class]="method.icon"></i>
+          <div>
+            <h4>{{ method.title }}</h4>
+            <p>{{ method.value }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a [href]="social.url" target="_blank" class="social-link" *ngFor="let social of socialLinks">
+          <i [class]="social.icon"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <form action="https://formspree.io/f/xqezogqo" method="POST">
+        <label class="form-group">
+          <input type="text" name="name" placeholder="Tu nombre" required>
+        </label>
+        <label class="form-group">
+          <input type="email" name="email" placeholder="Tu email" required>
+        </label>
+        <label class="form-group">
+          <input type="text" name="subject" placeholder="Asunto" required>
+        </label>
+        <label class="form-group">
+          <textarea name="message" placeholder="Tu mensaje" rows="5" required></textarea>
+        </label>
+        <button type="submit" class="btn-submit">
+          <i class="fas fa-paper-plane"></i>
+          Enviar Mensaje
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

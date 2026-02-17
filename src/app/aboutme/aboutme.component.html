@@ -1,0 +1,47 @@
+<div #aboutContainer class="about-container" id="sobre-mi">
+  <!-- IZQUIERDA: Texto -->
+  <div #aboutLeft class="about-left">
+    <h2 class="section-title">SOBRE MI</h2>
+    <p class="about-text">
+      Soy una persona apasionada y comprometida con el desarrollo de proyectos
+      tecnológicos orientados a generar impacto positivo en personas,
+      emprendimientos y organizaciones. Tengo experiencia en frontend con
+      Angular y en la creación de aplicaciones moviles conectadas a Firebase para la gestión de datos.
+      <br>
+      He participado en iniciativas de emprendimiento, fortaleciendo la creación de propuestas
+      de valor y el desarrollo de ideas de negocio, apoyándome en la programación para
+      convertirlas en soluciones reales. Me caracterizo por el trabajo en equipo, la comunicación
+      efectiva y el aprendizaje continuo.
+    </p>
+    <!-- Hobbies -->
+    <div class="hobbies">
+      <h3 class="hobbies-title">Hobbies</h3>
+      <div class="hobbies-bubbles">
+        <div class="bubble"><i class="fas fa-dumbbell"></i> Practica deporte constante</div>
+        <div class="bubble"><i class="fas fa-running"></i> Corredor aficionado</div>
+        <div class="bubble"><i class="fas fa-futbol"></i> Apasionado por el fútbol</div>
+        <div class="bubble"><i class="fas fa-rocket"></i> Amante a ciencia ficción</div>
+        <div class="bubble"><i class="fas fa-lightbulb"></i> Emprendedor</div>
+        <div class="bubble"><i class="fas fa-camera"></i> Tomar fotos</div>
+        <div class="bubble"><i class="fas fa-headphones"></i> Escuchar Musica CrossOver</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DERECHA: Carrusel vertical / horizontal responsive -->
+  <div #aboutRight class="about-right" [class.visible]="isVisible">
+    <div #achievementsViewport class="achievements-viewport">
+      <div #achievementsTrack class="achievements-track">
+        <div *ngFor="let logro of logrosDuplicados" class="achievement-card">
+          <i [class]="logro.icon"></i>
+          <div class="achievement-text">
+            <h3>{{ logro.title }}</h3>
+            <p>{{ logro.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

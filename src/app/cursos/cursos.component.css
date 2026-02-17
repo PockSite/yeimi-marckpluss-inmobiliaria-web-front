@@ -1,0 +1,510 @@
+/* ============================= */
+/* 4. CURSOS - CARRUSEL */
+/* ============================= */
+
+.courses-section {
+  background: var(--color-main);
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-title2 {
+  color: var(--color-title);
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.carousel {
+  overflow: hidden;
+  max-width: 1300px;
+  position: relative;
+  margin-left: 70px;
+  margin-right: 70px ;
+  gap: 5px;
+  touch-action: pan-y; /* allow vertical page scroll while capturing horizontal swipes */
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Centrar */
+}
+
+
+
+.carousel-card {
+  flex: 0 0 calc(100% / var(--color-main2, 1));
+  box-sizing: border-box;
+  margin: 0 10px; /* espacio entre tarjetas */
+}
+
+/* Botones de navegación */
+.carousel-container button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-main);
+  border: none;
+  color: var(--color-text2);
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+.carousel-container button:hover {
+  background: var(--color-main);
+}
+
+/* Flecha izquierda afuera */
+.carousel-container .prev {
+  left: -50px; /* fuera del carrusel */
+}
+
+/* Flecha derecha afuera */
+.carousel-container .next {
+  right: -50px;
+}
+
+/* From Uiverse.io by Saad3092003 */ 
+button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+button.learn-more {
+  width: 12rem;
+  height: auto;
+}
+
+button.learn-more .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  box-shadow: 0 0 5px 1px var(--color-text2);
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: var(--color-main2);
+  border-radius: 1.625rem;
+}
+
+button.learn-more .circle .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: var(--color-text2);
+}
+
+button.learn-more .circle .icon.arrow {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+}
+
+button.learn-more .circle .icon.arrow::before {
+  position: absolute;
+  content: "";
+  top: -0.29rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid var(--color-text2);
+  border-right: 0.125rem solid var(--color-text2);
+  transform: rotate(45deg);
+}
+
+button.learn-more .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  margin: 0 0 0 1.85rem;
+  color: var(--color-second);
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+button:hover .circle {
+  width: 100%;
+  box-shadow: 0 0 10px 2px var(--color-text2);
+}
+
+button:hover .button-text {
+  transform: translate(-1.7rem, 0);
+}
+
+button:hover .circle .icon.arrow {
+  background: var(--color-text2);
+  transform: translate(8.7rem, 0);
+}
+
+button:active .circle .icon.arrow {
+  transform: translate(9.5rem, 0);
+  transition: all 0.3s;
+}
+
+button:active .circle {
+  transform: scale(0.9);
+  transition: all 0.3s;
+  box-shadow: 0 0 5px 0.5px var(--color-text2);
+}
+
+button:hover .button-text {
+  color: var(--color-text2);
+}
+
+button:active .button-text {
+  color: var(--color-second);
+}
+
+/* En móviles ocultar flechas */
+@media (max-width: 768px) {
+  .carousel-container button {
+    display: none;
+  }
+}
+
+
+/* ============================= */
+/* NUEVO DISEÑO DE TARJETAS */
+/* ============================= */
+
+.card {
+  flex: 0 0 calc(100% / 3); /* 3 tarjetas visibles en desktop */
+  margin: 0 15px;
+  width: 280px;
+  border-radius: 20px;
+  background: var(--color-main2);
+  padding: 5px;
+  overflow: hidden;
+  box-shadow:var(--color-main2) 0px 7px 20px 0px;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0;
+  transform: translateY(50px);
+  animation: slideUp 0.8s ease forwards;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card .top-section {
+  height: 300px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(45deg, var(--color-main2) 0%, var(--color-title) 100%);
+  position: relative;
+}
+
+.card .top-section .border {
+  border-bottom-right-radius: 10px;
+  height: 80px;
+  width: 250px;
+  background: var(--color-main2);
+  position: relative;
+  transform: skew(-40deg);
+  box-shadow: -10px -10px 0 0 var(--color-main2);
+}
+
+.card .top-section .border::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 0;
+  right: -15px;
+  background: var(--color-main2);
+  border-top-left-radius: 10px;
+  box-shadow: -5px -5px 0 2px var(--color-main2);
+}
+
+.card .top-section::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: var(--color-main2);
+  height: 15px;
+  width: 15px;
+  border-top-left-radius: 15px;
+  box-shadow: -5px -5px 0 2px var(--color-main2);
+}
+
+.card .top-section .icons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: auto;
+  height: 30px;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 3;
+  padding: 8px 15px;
+}
+
+.card .top-section .icons .view-icon {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.card .top-section .icons .view-icon .svg {
+  height: 100%;
+  fill: var(--color-main2);
+  transition: fill 0.3s ease;
+}
+
+.card .top-section .icons .view-icon .svg:hover {
+  fill: var(--color-text2);
+}
+
+.card .top-section .course-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.card .top-section .course-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .top-section .course-image img {
+  transform: scale(1.05);
+}
+
+.card .bottom-section {
+  margin-top: 15px;
+  padding: 10px 5px;
+}
+
+.card .bottom-section .title {
+  display: block;
+  font-size: 17px;
+  font-weight: bolder;
+  color: var(--color-text2);
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.card .bottom-section .row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.card .bottom-section .row .item {
+  flex: 30%;
+  text-align: center;
+  padding: 5px;
+  color: var(--color-border);
+}
+
+.card .bottom-section .row .item .big-text {
+  font-size: 12px;
+  display: block;
+  font-weight: bold;
+}
+
+.card .bottom-section .row .item .regular-text {
+  font-size: 9px;
+}
+
+.card .bottom-section .row .item:nth-child(2) {
+  border-left: 1px solid rgba(255, 255, 255, 0.126);
+  border-right: 1px solid rgba(255, 255, 255, 0.126);
+}
+
+/* Botón base (posición y hover ya la tienes definida) */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent; /* eliminamos fondo */
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 3;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Reutilizamos tu posicionamiento */
+.carousel-btn.left { left: 10px; }
+.carousel-btn.right { right: 10px; }
+
+/* ===== Flechas personalizadas (Uiverse adaptado) ===== */
+.arrow {
+  cursor: pointer;
+  position: relative;
+  width: 50px;
+  height: 60px;
+}
+
+.arrow-top,
+.arrow-bottom {
+  background-color: var(--color-main2);
+  height: 4px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+.arrow-top:after,
+.arrow-bottom:after {
+  background-color: var(--color-text2);
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: all 0.15s;
+}
+
+.arrow-top {
+  transform: rotate(45deg);
+  transform-origin: bottom right;
+}
+.arrow-top:after {
+  left: 100%;
+  right: 0;
+  transition-delay: 0s;
+}
+
+.arrow-bottom {
+  transform: rotate(-45deg);
+  transform-origin: top right;
+}
+.arrow-bottom:after {
+  left: 0;
+  right: 100%;
+  transition-delay: 0.15s;
+}
+
+.arrow:hover .arrow-top:after {
+  left: 0;
+  transition-delay: 0.15s;
+}
+.arrow:hover .arrow-bottom:after {
+  right: 0;
+  transition-delay: 0s;
+}
+
+/* Flecha izquierda → invertida (apunta a la derecha) */
+.carousel-btn.left .arrow {
+  transform: rotate(180deg);
+}
+
+/* Flecha derecha → invertida (apunta a la izquierda) */
+.carousel-btn.right .arrow {
+  transform: rotate(0deg); /* la original apunta a la izquierda */
+}
+
+
+
+
+
+/* Animación de aparición */
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .card {
+    flex: 0 0 calc(100% / 2); /* 2 tarjetas visibles */
+  }
+}
+
+/* Celulares grandes */
+@media (max-width: 768px) {
+  .card {
+    flex: 0 0 calc(100% / 1.2); /* 1 tarjeta y media (asoma la siguiente) */
+    margin: 0 10px;
+  }
+
+  .carousel-btn {
+    display: none; /* Ocultamos botones en móviles */
+  }
+
+
+  .carousel {
+
+  margin-left: 10px;
+  margin-right: 10px ;
+  gap: 5px;
+}
+
+
+}
+
+/* Celulares pequeños */
+@media (max-width: 375px) {
+  .card {
+    flex: 0 0 100%; /* 1 tarjeta completa */
+    margin: 0 5px;
+  }
+
+  .carousel-btn {
+    display: none; /* Ocultamos botones en móviles */
+  }
+
+  .carousel {
+
+  margin-left: 10px;
+  margin-right: 10px ;
+  gap: 5px;
+}
+}

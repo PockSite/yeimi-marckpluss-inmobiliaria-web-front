@@ -1,0 +1,66 @@
+<!-- 4. CURSOS Y EDUCACIÓN -->
+<div class="courses-section" id="cursos">
+  <h2 class="section-title2">Cursos</h2>
+  <!-- Botón izquierda (oculto en móviles con CSS) -->
+  <!-- Botón izquierda -->
+  <button class="carousel-btn left" (click)="prevSlide()">
+    <div class="arrow">
+      <div class="arrow-top"></div>
+      <div class="arrow-bottom"></div>
+    </div>
+  </button>
+
+  <div class="carousel" #carousel (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)"
+    (touchend)="onTouchEnd()" (pointerdown)="onPointerDown($event)" (pointermove)="onPointerMove($event)"
+    (pointerup)="onPointerUp($event)" (touchcancel)="onTouchEnd()">
+
+    <!-- Track -->
+    <div class="carousel-track" #track (transitionend)="onTransitionEnd()"
+      [style.transform]="'translateX(' + currentTranslate + 'px)'">
+
+      <div class="card" *ngFor="let course of slides">
+        <div class="top-section">
+          <div class="border"></div>
+          <div class="icons">
+            <div class="view-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.5 16.5" class="svg">
+                <path
+                  d="M15.3 0C8.9 0 3.3 3.3 0 8.3c3.3 5 8.9 8.3 15.3 8.3s12-3.3 15.3-8.3C27.3 3.3 21.7 0 15.3 0zm0 14.5c-3.4 0-6.2-2.8-6.2-6.2C9 4.8 11.8 2 15.3 2c3.4 0 6.2 2.8 6.2 6.2 0 3.5-2.8 6.3-6.2 6.3z">
+                </path>
+              </svg>
+            </div>
+          </div>
+          <div class="course-image">
+            <img [src]="course.image" alt="Imagen del curso">
+          </div>
+        </div>
+        <div class="bottom-section">
+          <span class="title">{{ course.title }}</span>
+          <div class="row row1">
+            <div class="item">
+              <span class="big-text">100%</span>
+              <span class="regular-text">Completado</span>
+            </div>
+            <div class="item">
+              <span class="big-text">Certificado</span>
+              <span class="regular-text">Disponible</span>
+            </div>
+            <div class="item">
+              <span class="big-text">{{ course.modalidad }}</span>
+              <span class="regular-text">Modalidad</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- Botón derecha (oculto en móviles con CSS) -->
+  <!-- Botón derecha -->
+  <button class="carousel-btn right" (click)="nextSlide()">
+    <div class="arrow arrow-right">
+      <div class="arrow-top"></div>
+      <div class="arrow-bottom"></div>
+    </div>
+  </button>
+</div>

@@ -1,0 +1,75 @@
+:root {
+  --color-main: #06050e;
+  --color-main-rgb: 6, 5, 14;
+  --color-main2: #2d2f32;
+  --color-second: #eb5e28;
+  --color-second-rgb: 235, 94, 40;
+  --color-title: #DAC29E;
+  --color-title-rgb: 218, 194, 158;
+  --color-border: #c6ac8f;
+  --color-text2: #eae0d5;
+  --color-tech: rgba(255, 255, 255, 0.03);
+
+  --color-btn-contact: #7a3eff;
+  --color-btn-linkedin: #0077b5;
+  --color-btn-github: #181717;
+  --color-btn-cv: #2ecc71;
+
+  --sidebar-desktop: 290px;
+  --sidebar-tablet: 200px;
+  --sidebar-mobile: 140px;
+
+  /* Typography */
+  --font-title: 'Outfit', sans-serif;
+  --font-subtitle: 'Plus Jakarta Sans', sans-serif;
+  --font-text: 'Inter', sans-serif;
+}
+
+
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #06050e;
+  font-family: var(--font-text);
+  /* Global text font */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title);
+}
+
+.subtitle {
+  font-family: var(--font-subtitle);
+}
+
+/* Animación de desvanecimiento (header superior) */
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+/* Animación de entrada desde la izquierda (sidebar) */
+.slide-in {
+  animation: slideIn 0.8s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,86 @@
+
+/* Layout principal */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%; /* ocupa el ancho completo de la ventana */
+  overflow-x: hidden; /* evita scroll horizontal inesperado */
+}
+
+/* Contenido sin sidebar */
+.content {
+  flex: 1;
+  margin-left: 0;
+  width: 100%; /* ocupa todo el ancho cuando no hay sidebar */
+  transition: all 0.5s ease;
+}
+
+/* Contenido con sidebar */
+.content.with-sidebar {
+  margin-left: 330px;               /* empuja a la derecha */
+  width: calc(100% - 250px);        /* ocupa solo el ancho restante */
+}
+
+/* 📱 Pestaña lateral móvil */
+.sidebar-tab {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background: var(--color-main);
+  color: var(--color-second);
+  padding: 10px;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 2px 0 6px var(--color-main2);
+  cursor: pointer;
+  z-index: 300;
+}
+
+/* Overlay borroso */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.3);
+  z-index: 250;
+}
+
+/* Sidebar móvil */
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 100vh;
+  background: var(--color-bg-sidebar);
+  z-index: 400;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.4);
+  animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+
+/* --- Responsive --- */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .content.with-sidebar {
+    margin-left: 220px;
+    width: calc(100% - 350px);
+  }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+  .content.with-sidebar {
+    margin-left: 180px;
+    width: calc(100% - 500px);
+  }
+}

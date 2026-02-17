@@ -1,0 +1,203 @@
+/* === FONDO GENERAL CON CUADRÍCULA === */
+.grid-wrapper {
+  min-height: 1000px;
+  width: 100%;
+  position: relative;
+  background-color: var(--color-main);
+  /* fondo base claro */
+  overflow: hidden;
+}
+
+.grid-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  background-image: linear-gradient(to right, var(--color-main) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-main2) 1px, transparent 1px);
+  background-size: 20px 30px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%,
+      var(--color-main) 80%,
+      transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%,
+      var(--color-main) 80%,
+      transparent 100%);
+}
+
+/* === CONTENIDO INTERIOR === */
+.skills-content {
+  position: relative;
+  z-index: 2;
+  padding: 60px 30px;
+}
+
+/* === TÍTULO DE SECCIÓN === */
+.section-title2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--color-title);
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+/* === CONTENEDOR PRINCIPAL === */
+.skills-section {
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  /* CSS variable set by component to force uniform heights when needed */
+  --card-height: auto;
+}
+
+/* === TARJETA INDIVIDUAL === */
+.card {
+  position: relative;
+  width: 300px;
+  max-width: 100%;
+  height: var(--card-height, auto);
+  /* unified height set from TS when needed */
+  background-color: var(--color-main);
+  /* ✅ Fondo blanco de las tarjetas */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 18px 14px;
+  gap: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  /* Changed to hidden to contain pseudo-elements */
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(50px) scale(0.95);
+  transition: transform 0.6s ease, opacity 0.6s ease, box-shadow 0.6s ease;
+  box-shadow: 0 6px 15px var(--color-main2);
+  backface-visibility: hidden;
+}
+
+/* === EFECTO DE BRILLO EN HOVER === */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(180deg, transparent, var(--color-title), transparent);
+  transform-origin: bottom right;
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: -10;
+}
+
+.card:hover::before {
+  opacity: 0.15;
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.card::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: 2px;
+  border-radius: 12px;
+  background: var(--color-main);
+}
+
+/* === ICONO === */
+.skill-icon {
+  font-size: 40px;
+  color: var(--color-title);
+  margin-bottom: 8px;
+  transition: transform 0.4s ease, color 0.4s ease;
+  z-index: 10;
+}
+
+.card:hover .skill-icon {
+  transform: scale(1.1);
+  color: var(--color-second);
+}
+
+/* === TEXTO INTERIOR === */
+.heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-title);
+  text-transform: uppercase;
+}
+
+.description {
+  font-size: 0.85rem;
+  color: var(--color-text2);
+  line-height: 1.4;
+  margin: 5px 0;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.entity {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-second);
+}
+
+.date {
+  font-size: 0.75rem;
+  color: var(--color-border);
+  font-weight: 600;
+}
+
+/* === ANIMACIÓN AL APARECER === */
+.card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title2 {
+    font-size: 1.7rem;
+  }
+
+  .card {
+    width: 90%;
+    height: auto;
+    /* on mobile allow auto height */
+  }
+}

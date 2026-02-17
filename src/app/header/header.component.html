@@ -1,0 +1,69 @@
+<!-- 🌐 Sidebar (Desktop/Tablet) -->
+<header class="header sidebar" *ngIf="!isMobile">
+  <!-- Foto de perfil -->
+  <section class="profile-section">
+    <div class="profile-pic">
+      <img src="assets/images/mifoto.png" alt="Foto de perfil">
+    </div>
+    <h2 class="name">Daniel León</h2>
+    <h3 class="role">Web Developer</h3>
+  </section>
+
+  <!-- Info de contacto -->
+  <section class="contact-info">
+    <p><i class="fas fa-map-marker-alt"></i> Bogotá, Colombia</p>
+    <p><i class="fas fa-phone"></i> +57 318 2018 778</p>
+    <p><i class="fas fa-envelope"></i> dafelepe10@gmail.com</p>
+  </section>
+
+  <!-- Botones de acción -->
+  <nav class="action-buttons">
+    <a href="https://www.instagram.com/daniel_leonpe" target="_blank" class="btn contact-btn">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+    <a href="https://www.linkedin.com/in/daniel-felipe-leon-perez-055061336" target="_blank" class="btn linkedin-btn">
+      <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+    <a href="https://github.com/danieleon08" target="_blank" class="btn github-btn">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+    <a href="assets/cvpersonal.pdf" download class="btn cv-btn">
+      <i class="fas fa-download"></i> Download CV
+    </a>
+  </nav>
+</header>
+
+<!-- 📱 Navbar (Celulares SIN botón) -->
+<nav class="mobile-header" *ngIf="isMobile">
+  <!-- Foto de perfil -->
+  <section class="profile-sectionmov">
+    <div class="profile-picmov">
+      <img src="assets/images/mifoto.png" alt="Foto de perfil">
+    </div>
+    <h2 class="name">Daniel León</h2>
+    <h3 class="role">Web Developer</h3>
+  </section>
+
+  <!-- Info de contacto -->
+  <section class="contact-infomov">
+    <p><i class="fas fa-map-marker-alt"></i> Bogotá, Colombia</p>
+    <p><i class="fas fa-phone"></i> +57 318 2018 778</p>
+    <p><i class="fas fa-envelope"></i> dafelepe10@gmail.com</p>
+  </section>
+
+  <!-- Botones de acción -->
+  <nav class="action-buttonsmov">
+    <a href="https://www.instagram.com/daniel_leonpe" class="btn contact-btn">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+    <a href="https://www.linkedin.com/in/daniel-felipe-leon-perez-055061336" target="_blank" class="btn linkedin-btn">
+      <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+    <a href="https://github.com/danieleon08" target="_blank" class="btn github-btn">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+    <a href="assets/cvpersonal.pdf" download class="btn cv-btn">
+      <i class="fas fa-download"></i> Download CV
+    </a>
+  </nav>
+</nav>

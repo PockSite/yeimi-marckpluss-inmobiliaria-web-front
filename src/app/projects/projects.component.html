@@ -1,0 +1,42 @@
+<!-- 6. PROYECTOS -->
+<div class="projects-section" id="proyectos">
+  <div id="titulo-proyecto" class="section-title2">Proyectos Destacados</div>
+
+  <div class="projects-container">
+    <!-- Detalle del proyecto -->
+    <div class="project-detail" *ngIf="selectedProject" [@projectTransition]="selectedProject">
+      <img [src]="selectedProject.image" alt="Detalle proyecto">
+      <div class="detail-content">
+        <h3>{{ selectedProject.title }}</h3>
+        <p class="descripcion">{{ selectedProject.description }}</p>
+        <div class="project-tags">
+          <span class="tag" *ngFor="let feature of selectedProject.features">{{ feature }}</span>
+        </div>
+        <div class="project-links">
+          <a [href]="selectedProject.repoUrl" target="_blank" class="project-link">
+            <i class="fab fa-github"></i> Ver Código
+          </a>
+          <a [href]="selectedProject.demoUrl" target="_blank" class="project-link">
+            <i class="fas fa-external-link-alt"></i> Ver proyecto
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lista de proyectos -->
+    <div class="projects-list">
+      <div class="project-card" *ngFor="let project of projects; let i = index" (click)="goToProjectSection(project)"
+        [class.active]="selectedProject === project" [style.animation-delay]="i * 0.1 + 's'">
+        <div class="project-image">
+          <img [src]="project.image" alt="proyecto">
+          <div class="overlay">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.short }}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

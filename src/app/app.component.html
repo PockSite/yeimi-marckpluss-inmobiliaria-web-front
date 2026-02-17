@@ -1,0 +1,21 @@
+<div class="layout">
+  <!-- Header superior -->
+  <app-header-top *ngIf="showTopHeader" [class.fade-out]="!showTopHeader"></app-header-top>
+
+  <!-- Sidebar (Desktop/Tablet con scroll) -->
+  <app-header *ngIf="!showTopHeader && !isMobile" [class.slide-in]="!showTopHeader"></app-header>
+
+  <!-- 📱 Pestaña lateral en móviles -->
+  <div *ngIf="isMobile" class="sidebar-tab" (click)="toggleSidebar()">☰</div>
+
+  <!-- Overlay borroso -->
+  <div *ngIf="sidebarOpen" class="overlay" (click)="toggleSidebar()"></div>
+
+  <!-- Sidebar en móviles, forzado como sidebar -->
+  <app-header *ngIf="sidebarOpen && isMobile" class="mobile-sidebar" [forceSidebar]="true"></app-header>
+
+  <main class="content" [ngClass]="{ 'with-sidebar': layoutConSidebar }">
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </main>
+</div>

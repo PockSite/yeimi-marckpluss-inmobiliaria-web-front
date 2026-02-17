@@ -1,0 +1,264 @@
+/* === SECCIÓN TECNOLOGÍAS === */
+.tech-section {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: var(--color-main2);
+}
+
+.tech-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.tech-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease-in-out;
+}
+
+.tech-icon.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tech-icon img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.tech-icon:hover img {
+  transform: scale(1.1);
+}
+
+.tech-icon span {
+  font-size: 1rem;
+  color: var(--color-main2);
+}
+
+
+.section-title2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--color-title);
+  margin-bottom: 70px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  position: relative;
+  animation: fadeInDown 1s ease forwards;
+}
+
+/* Categorías organizadas en columnas centradas */
+.tech-categories {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column; /* 🔹 apila en vertical */
+  gap: 80px; /* separación entre secciones */
+}
+
+
+/* Títulos de cada categoría */
+.tech-category h3 {
+  color: var(--color-second);
+  font-size: 1.6rem;
+  margin-bottom: 30px;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+/* Grid de iconos */
+.tech-icon {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-in-out;
+}
+
+.tech-icon.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cada icono */
+.tech-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: var(--color-tech);
+  border-radius: 15px;
+  box-shadow: 0px 6px 15px var(--color-main);
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Aparición suave */
+.tech-icon.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.8s ease;
+}
+
+.tech-icon:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0px 15px 35px var(--color-main);
+}
+
+/* Icono principal */
+.tech-icon i {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.tech-icon:hover i {
+  transform: scale(1.2);
+}
+
+/* Nombre debajo del icono */
+.tech-icon span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text2);
+  text-align: center;
+}
+
+/* === ANIMACIONES === */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+
+@keyframes fadeWord {
+  0%   { opacity: 0; transform: translateY(20px); }
+  20%  { opacity: 1; transform: translateY(0); }
+  80%  { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+   .section-title2 {
+    font-size: 1.6rem;
+  }
+  .timeline::before {
+    left: 20px;
+  }
+  
+  .timeline-item {
+    width: 100%;
+    left: 0 !important;
+    padding-left: 60px !important;
+    padding-right: 0 !important;
+  }
+  
+  .timeline-item::before {
+    left: 10px !important;
+  }
+  
+  .projects-container {
+    flex-direction: column;
+  }
+  
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .carousel-btn.left { left: -20px; }
+  .carousel-btn.right { right: -20px; }
+  
+  .card {
+    min-width: calc(100% / 2);
+  }
+  
+  .tech-icons {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
+
+
+@media (max-width: 380px) {
+
+  .section-title2 {
+   font-size: 1.4rem;
+  }
+
+
+  .tech-icons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* ⭐ 2 columnas siempre */
+    gap: 20px;
+    justify-items: center; /* ⭐ Centra cada tarjetica */
+    align-items: center;   /* ⭐ Mantiene alineado verticalmente */
+    width: 100%;
+  }
+
+  .tech-icon {
+    width: 100px;     /* tarjeta más pequeña */
+    padding: 15px;
+    text-align: center; /* asegura centrado interno */
+  }
+
+  .tech-icon i {
+    font-size: 2.2rem; /* ícono más pequeño */
+  }
+
+  .tech-icon span {
+    font-size: 0.8rem; /* texto ajustado */
+  }
+}
+

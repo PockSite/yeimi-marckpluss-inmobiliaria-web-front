@@ -1,0 +1,23 @@
+<!-- <div class="logo-container">
+  <img class="lion-logo" src="assets/images/logonew2.png" alt="Logo">
+</div> -->
+<div class="tubelight-navbar" [class.hidden-nav]="isHidden">
+  <div class="navbar-container">
+    <a *ngFor="let item of navItems" [href]="item.url" (click)="setActiveTab(item.name, $event)" class="nav-item"
+      [class.active]="activeTab === item.name">
+
+      <span class="nav-text d-none d-md-inline">{{ item.name }}</span>
+      <span class="nav-icon d-md-none">
+        <i [class]="item.icon"></i>
+      </span>
+
+      <div *ngIf="activeTab === item.name" class="lamp-effect">
+        <div class="lamp-base">
+          <div class="lamp-light"></div>
+          <div class="lamp-glow-top"></div>
+          <div class="lamp-glow-bottom"></div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

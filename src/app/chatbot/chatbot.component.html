@@ -1,0 +1,35 @@
+<div class="chatbot-container">
+    <!-- Floating Button -->
+    <button class="chat-toggle-btn" (click)="toggleChat()">
+        <img *ngIf="!isOpen" src="assets/images/logonew2.png" alt="Chat" class="chat-toggle-icon">
+        <span *ngIf="isOpen">✖</span>
+    </button>
+
+    <!-- Chat Window -->
+    <div class="chat-window" [class.open]="isOpen">
+        <div class="chat-header">
+            <img src="assets/images/logonew2.png" class="avatar" alt="LionBot">
+            <div class="title">
+                <h3>LionBot</h3>
+                <p>En línea</p>
+            </div>
+            <button class="close-btn" (click)="toggleChat()">✖</button>
+        </div>
+
+        <div class="chat-messages">
+            <div *ngFor="let msg of messages" class="message" [ngClass]="msg.sender">
+                <p>{{ msg.text }}</p>
+            </div>
+
+            <div *ngIf="isLoading" class="message bot">
+                <p>Escribiendo...</p>
+            </div>
+        </div>
+
+        <div class="chat-input">
+            <input type="text" placeholder="Escribe un mensaje..." [(ngModel)]="userMessage"
+                (keyup.enter)="sendMessage()" />
+            <button class="send-btn" (click)="sendMessage()" [disabled]="isLoading || !userMessage.trim()">➤</button>
+        </div>
+    </div>
+</div>

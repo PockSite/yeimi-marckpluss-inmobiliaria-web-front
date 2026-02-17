@@ -1,0 +1,210 @@
+/* Tubelight Navbar Styles */
+.tubelight-navbar {
+  position: fixed;
+  bottom: auto;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%) scaleX(1);
+  transform-origin: center;
+  z-index: 50;
+  margin-bottom: 0;
+  width: auto;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  opacity: 1;
+}
+
+.tubelight-navbar.hidden-nav {
+  transform: translateX(-50%) scaleX(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Logo Styles */
+.logo-container {
+  position: absolute;
+  top: 7.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 49;
+  /* Below navbar if they overlap, but usually separate */
+  transition: all 0.3s ease;
+}
+
+.lion-logo {
+  width: 100px;
+  /* Elegant size for mobile */
+  height: auto;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+@media (min-width: 770px) {
+  .tubelight-navbar {
+    top: 0;
+    bottom: auto;
+    margin-bottom: 0;
+    padding-top: 1.5rem;
+  }
+
+  .logo-container {
+    top: 1.5rem;
+    left: 2rem;
+    /* Side positioning for desktop */
+    transform: none;
+  }
+
+  .lion-logo {
+    width: 100px;
+    /* Slightly larger for desktop */
+  }
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: rgba(var(--color-main-rgb), 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.25rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  border-radius: 9999px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.nav-item {
+  position: relative;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  transition: color 0.3s ease;
+  color: rgba(255, 255, 255, 0.8);
+  /* Adjust based on theme */
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-item:hover {
+  color: var(--color-second);
+}
+
+.nav-item.active {
+  color: var(--color-second);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-text {
+  display: none;
+}
+
+.nav-icon {
+  display: inline-block;
+}
+
+@media (min-width: 769px) {
+  .nav-text {
+    display: inline;
+  }
+
+  .nav-icon {
+    display: none;
+  }
+}
+
+/* Lamp Effect */
+.lamp-effect {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  background-color: rgba(var(--color-second-rgb), 0.05);
+  border-radius: 9999px;
+  z-index: -10;
+  overflow: hidden;
+}
+
+.lamp-base {
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rem;
+  height: 0.25rem;
+  background-color: var(--color-second);
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+}
+
+.lamp-light {
+  position: absolute;
+  width: 3rem;
+  height: 1.5rem;
+  background-color: rgba(var(--color-second-rgb), 0.2);
+  border-radius: 9999px;
+  filter: blur(12px);
+  top: -0.5rem;
+  left: -0.5rem;
+}
+
+.lamp-glow-top {
+  position: absolute;
+  width: 2rem;
+  height: 1.5rem;
+  background-color: rgba(var(--color-second-rgb), 0.2);
+  border-radius: 9999px;
+  filter: blur(12px);
+  top: -0.25rem;
+  left: 0;
+}
+
+.lamp-glow-bottom {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  background-color: rgba(var(--color-second-rgb), 0.2);
+  border-radius: 9999px;
+  filter: blur(4px);
+  top: 0;
+  left: 0.5rem;
+}
+
+/* Helper classes for display (if bootstrap/tailwind not available) */
+.d-none {
+  display: none;
+}
+
+.d-md-inline {
+  display: inline;
+}
+
+.d-md-none {
+  display: none;
+}
+
+@media (min-width: 770px) {
+  .d-md-inline {
+    display: inline;
+  }
+
+  .d-md-none {
+    display: none;
+  }
+
+  .d-none.d-md-inline {
+    display: inline;
+  }
+}
+
+@media (max-width: 770px) {
+  .d-md-inline {
+    display: none;
+  }
+
+  .d-md-none {
+    display: inline;
+  }
+}

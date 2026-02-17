@@ -1,0 +1,325 @@
+/* 6. PROYECTOS */
+.projects-section {
+  background: var(--color-main);
+  padding: 80px 20px;
+}
+
+.section-title2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--color-title);
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  position: relative;
+}
+
+.projects-container {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.project-detail {
+  flex: 2;
+  background: var(--color-main2);
+  border-radius: 20px;
+  box-shadow: 0px 15px 40px var(--color-main);
+  padding: 30px;
+  animation: fadeIn 0.6s ease;
+  min-height: 750px;
+}
+
+
+.project-detail img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.detail-content h3 {
+  color: var(--color-second);
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.detail-content p {
+  color: var(--color-text2);
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+.tag {
+  background: linear-gradient(135deg, var(--color-title) 0%, var(--color-title) 100%);
+  color: var(--color-main);
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.tag:hover {
+  background: var(--color-border);
+  color: var(--color-main);
+  box-shadow: 0px 6px 15px var(--color-border);
+}
+
+.project-links {
+  margin-top: 100px;
+  display: flex;
+  gap: 15px;
+}
+
+.project-link {
+  background: var(--color-main2);
+  color: var(--color-text2);
+  padding: 12px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.project-link:hover {
+  background: var(--color-title);
+  transform: translateY(-2px);
+  color: var(--color-main);
+  box-shadow: 0px 8px 20px var(--color-border);
+}
+
+
+.projects-list {
+  flex: 1.2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* 2 columns */
+  gap: 20px;
+}
+
+.project-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+  height: 250px;
+  /* Fixed height for standard size */
+  width: 100%;
+}
+
+.project-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+/* Overlay at the bottom with gradient */
+.project-card .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-height: 100%;
+  /* Prevent overflowing the card */
+  padding: 20px;
+  /* Reduced padding */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  box-sizing: border-box;
+}
+
+.project-card .overlay h3 {
+  color: #fff;
+  font-size: 1.3rem;
+  /* Adjusted for smaller card */
+  font-weight: 700;
+  margin-bottom: 5px;
+  text-align: left;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.project-card .overlay p {
+  color: #ddd;
+}
+
+.project-card:hover .overlay {
+  opacity: 0;
+}
+
+.project-card.active {
+  border: 3px solid var(--color-title);
+  box-shadow: 0px 0px 20px var(--color-title);
+}
+
+.project-image {
+  height: 100%;
+  width: 100%;
+}
+
+/* ANIMACIONES */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeWord {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    left: 0 !important;
+    padding-left: 60px !important;
+    padding-right: 0 !important;
+  }
+
+  .timeline-item::before {
+    left: 10px !important;
+  }
+
+  .projects-container {
+    flex-direction: column;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .carousel-btn.left {
+    left: -20px;
+  }
+
+  .carousel-btn.right {
+    right: -20px;
+  }
+
+  .card {
+    min-width: calc(100% / 2);
+  }
+
+  .tech-icons {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title2 {
+    font-size: 1.8rem;
+  }
+}
