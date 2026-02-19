@@ -1,7 +1,7 @@
 # 🏠 Marckpluss Inmobiliaria - Frontend Project
 
 ![Status](https://img.shields.io/badge/Status-En%20Desarrollo-green)
-![Tech](https://img.shields.io/badge/Frontend-React%20%2F%20Next.js-blue)
+![Tech](https://img.shields.io/badge/Frontend-Angular)
 ![Design](https://img.shields.io/badge/Design-Minimalista%20%26%20Sobrio-maroon)
 
 Bienvenido al repositorio oficial del desarrollo frontend para **Marckpluss Inmobiliaria**. Este proyecto busca modernizar la presencia digital de la marca, ofreciendo una experiencia de usuario fluida, elegante y altamente funcional.
