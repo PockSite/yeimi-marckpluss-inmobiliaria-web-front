@@ -1,13 +1,13 @@
 :root {
-  --color-main: #06050e;
+  --color-main: #401014;
   --color-main-rgb: 6, 5, 14;
-  --color-main2: #2d2f32;
-  --color-second: #eb5e28;
+  --color-main2: #691420;
+  --color-second: #691420;
   --color-second-rgb: 235, 94, 40;
-  --color-title: #DAC29E;
+  --color-title: #e6e7e9;
   --color-title-rgb: 218, 194, 158;
   --color-border: #c6ac8f;
-  --color-text2: #eae0d5;
+  --color-text2: #ffffff;
   --color-tech: rgba(255, 255, 255, 0.03);
 
   --color-btn-contact: #7a3eff;
