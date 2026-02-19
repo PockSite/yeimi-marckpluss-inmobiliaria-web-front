@@ -1,92 +1,80 @@
-# 🏠 Marckpluss Inmobiliaria - Frontend Project
+# 🏠 Marckpluss Inmobiliaria - Frontend Project (Angular)
 
+![Angular](https://img.shields.io/badge/Framework-Angular%2017+-red?logo=angular)
 ![Status](https://img.shields.io/badge/Status-En%20Desarrollo-green)
-![Tech](https://img.shields.io/badge/Frontend-Angular)
-![Design](https://img.shields.io/badge/Design-Minimalista%20%26%20Sobrio-maroon)
+![Design](https://img.shields.io/badge/Design-Minimalista%20%26%20Sobrio-401014)
 
-Bienvenido al repositorio oficial del desarrollo frontend para **Marckpluss Inmobiliaria**. Este proyecto busca modernizar la presencia digital de la marca, ofreciendo una experiencia de usuario fluida, elegante y altamente funcional.
+Bienvenido al repositorio oficial del desarrollo frontend para **Marckpluss Inmobiliaria**. Este proyecto utiliza la potencia de Angular para modernizar la presencia digital de la marca, ofreciendo una plataforma robusta, reactiva y elegante.
 
 ---
 
 ## 🏢 Sobre la Empresa
 
-**Marckpluss** es una inmobiliaria enfocada en la intermediación de ventas y arriendos a nivel nacional, con un fuerte arraigo en la ciudad de **Bogotá**. Su filosofía se basa en el acompañamiento integral, desde la publicación hasta el cierre del negocio, bajo un modelo híbrido (presencial/virtual).
+**Marckpluss** es una inmobiliaria enfocada en la intermediación de ventas y arriendos a nivel nacional, con un enfoque principal en **Bogotá**. Su modelo de negocio es híbrido (presencial/virtual) y se destaca por un acompañamiento humano y profesional en todo el proceso de comercialización.
 
 ### ✨ Valores de Marca
-* 🤝 **Buen Servicio:** Excelencia en cada punto de contacto.
-* 👨‍👩‍👧‍👦 **Apoyo Familiar:** Cercanía y trato humano con el cliente.
-* 🔒 **Confianza y Fidelidad:** Procesos transparentes y seguros.
+* 🤝 **Buen Servicio:** Excelencia y profesionalismo.
+* 👨‍👩‍👧‍👦 **Apoyo Familiar:** Cercanía y trato personalizado.
+* 🔒 **Confianza:** Procesos transparentes de principio a fin.
 
 ---
 
 ## 🎨 Manual de Identidad Visual
 
-El diseño del sitio web sigue una línea **minimalista, sobria y moderna**, alineada con el logo de la marca.
+El diseño se basa en un concepto **sobrio y moderno**, utilizando la elegancia de las fuentes Serif del logo combinadas con una interfaz limpia.
 
 ### 🔴 Paleta de Colores
-| Color | Hex | Uso Sugerido |
+| Tono | Hex | Aplicación |
 | :--- | :--- | :--- |
-| **Vino Profundo** | `#401014` | Fondos principales, Header, Footer. |
-| **Rojo Elegante** | `#691420` | Elementos secundarios, Hover states. |
-| **Rojo Vibrante** | `#971a1e` | Botones de Llamado a la Acción (CTA), Acentos. |
-| **Gris Claro** | `#e6e7e9` | Fondos de sección, Textos secundarios, Divisores. |
+| **Vino Profundo** | `#401014` | Navbar, Footer y fondos oscuros. |
+| **Rojo Elegante** | `#691420` | Fondos secundarios y acentos. |
+| **Rojo Vibrante** | `#971a1e` | Botones de Acción (CTA) y estados activos. |
+| **Gris Niebla** | `#e6e7e9` | Fondos de sección y contraste de texto. |
 
-### ✍️ Tipografía
-1.  **Headings (Títulos):** `Playfair Display` (Serif). Aporta la elegancia del logo.
-2.  **Body (Cuerpo):** `Montserrat` o `Inter` (Sans Serif). Para facilitar la lectura de características de inmuebles.
-
----
-
-## 🚀 Funcionalidades Principales
-
-* **🔄 Sincronización Automática:** Integración con la API de **Domus** para actualización de inventario en tiempo real.
-* **🔍 Filtros Avanzados:** Búsqueda por tipo de propiedad (Venta/Arriendo), ubicación, precio y características.
-* **🤖 Chatbot IA:** Asistente inteligente integrado para atención 24/7 y captura de leads.
-* **📧 Sistema de Notificaciones:** Automatización de correos electrónicos para seguimiento de procesos.
-* **📱 Diseño Responsivo:** Optimización total para dispositivos móviles y tablets.
-* **🔗 Redes Sociales:** Integración directa con Instagram, TikTok y Metro Cuadrado.
+### ✍️ Tipografía Sugerida
+* **Títulos (Display):** `Playfair Display` (Serif) - Evoca la sofisticación del logo.
+* **Cuerpo y Datos:** `Montserrat` o `Inter` (Sans Serif) - Para máxima legibilidad en fichas técnicas.
 
 ---
 
-## 📋 Requerimientos y Atributos de Calidad
+## 🚀 Funcionalidades Clave
 
-### Requerimientos Funcionales (RF)
-- [ ] Visualización de catálogo de inmuebles desde Domus.
-- [ ] Sistema de búsqueda y filtrado dinámico.
-- [ ] Formulario de contacto y sistema de tickets/feedback.
-- [ ] Integración de Chatbot con IA.
-
-### Atributos de Calidad (ASRs)
-* **Performance:** Carga inicial inferior a 2 segundos (LCP).
-* **Disponibilidad:** Interfaz resiliente a fallos de la API externa.
-* **Usabilidad:** Navegación intuitiva con un máximo de 3 clics para llegar a una propiedad.
-* **Escalabilidad:** Estructura preparada para futuras herramientas de "Estudio de Títulos".
+* **🔄 Sincronización API Domus:** Consumo automatizado de servicios para mantener el catálogo actualizado sin intervención manual.
+* **🔍 Buscador Reactivo:** Filtros avanzados (precio, tipo, ubicación) gestionados con *Reactive Forms* de Angular.
+* **🤖 IA Chatbot Integrado:** Asistente inteligente para atención inicial y captura de leads.
+* **📧 Sistema de Feedback:** Gestión de tickets y notificaciones por correo para usuarios.
+* **📱 Mobile First:** Interfaz totalmente adaptativa para consultas desde smartphones.
+* **📈 Trazabilidad:** Implementación de métricas para medir el flujo del usuario en el sitio.
 
 ---
 
-## 🗺️ Estructura del Sitio (Sitemap)
+## 📋 Especificaciones Técnicas (ASRs)
 
-1.  **Inicio (Home):** Hero con buscador principal, propiedades destacadas y propuesta de valor.
-2.  **Catálogo:** Grilla de propiedades con filtros laterales o superiores.
-3.  **Detalle de Propiedad:** Galería de imágenes, ficha técnica, ubicación (mapa) y botón de contacto.
-4.  **Servicios:** Explicación detallada de intermediación de ventas y arriendos.
-5.  **Sobre Nosotros:** Historia de Marckpluss y valores familiares.
-6.  **Contacto:** Formulario, integración con WhatsApp y redes sociales.
+* **Rendimiento:** Optimización mediante *Lazy Loading* y *Server-Side Rendering (SSR)* para mejorar el SEO inmobiliario.
+* **Mantenibilidad:** Arquitectura modular basada en componentes y servicios inyectables.
+* **Seguridad:** Manejo seguro de datos cumpliendo normativas locales.
+* **Escalabilidad:** Código preparado para futuras funciones como "Estudio de Títulos".
 
 ---
 
-## 🛠️ Stack Tecnológico (Sugerido)
+## 🗺️ Secciones del Sitio
 
-* **Framework:** React.js / Next.js (para SEO y rendimiento).
-* **Estilos:** Tailwind CSS (basado en la paleta definida).
-* **Estado:** TanStack Query (para manejo eficiente de la API de Domus).
-* **Componentes:** Headless UI o Radix UI para accesibilidad.
-
----
-
-## 📈 Métricas de Éxito
-* **Trazabilidad:** Seguimiento del flujo del usuario desde el ingreso hasta el clic en "Contactar".
-* **Conversión:** Incremento en la captación de leads a través del Chatbot vs Formulario tradicional.
+1.  **Home:** Impacto visual con buscador integrado y propiedades destacadas.
+2.  **Catálogo Dinámico:** Listado con filtros multivariables.
+3.  **Ficha de Propiedad:** Detalle técnico, galería, ubicación y contacto directo.
+4.  **Servicios:** Información sobre Ventas y Arriendos.
+5.  **Nosotros:** Historia, visión y valores de cercanía.
+6.  **Contacto:** Formulario validado y enlaces directos a WhatsApp/Redes Sociales.
 
 ---
-*Desarrollado con ❤️ para Marckpluss Inmobiliaria.*
+
+## 🛠️ Stack Tecnológico
+
+* **Core:** Angular (v17+)
+* **Estado y Reactividad:** RxJS (Observables para datos de Domus).
+* **Estilos:**  CSS
+* **Componentes:** Angular Material (opcional para componentes de UI sobrios).
+* **Despliegue sugerido:** Vercel o VPS.
+
+---
+*Diseñado con precisión para potenciar el sector inmobiliario con tecnología de vanguardia.*
