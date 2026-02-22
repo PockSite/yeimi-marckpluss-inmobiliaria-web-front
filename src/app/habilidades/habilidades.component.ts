@@ -28,7 +28,12 @@ export class HabilidadesComponent implements AfterViewInit, OnDestroy {
       bathrooms: 2,
       price: 440000000,
       price_format: '440.000.000',
-      image1: 'https://s3-us-west-2.amazonaws.com/pictures.domus.la/inmobiliaria_183/5431_1_1771454244.jpg',
+      images: [
+        'https://s3-us-west-2.amazonaws.com/pictures.domus.la/inmobiliaria_183/5431_1_1771454244.jpg',
+        'https://via.placeholder.com/640x420.png?text=Foto+2',
+        'https://via.placeholder.com/640x420.png?text=Foto+3'
+      ],
+      currentImageIndex: 0,
       description: 'Apartamento en venta Chapinero Alto 66Mts., 2 habitaciones grandes, terraza pequeña cubierta, cocina integral y parqueadero cubierto.'
     },
     {
@@ -43,7 +48,13 @@ export class HabilidadesComponent implements AfterViewInit, OnDestroy {
       bathrooms: 3,
       price: 1250000000,
       price_format: '1.250.000.000',
-      image1: 'https://via.placeholder.com/640x420.png?text=Propiedad+1',
+      images: [
+        'https://via.placeholder.com/640x420.png?text=Propiedad+1',
+        'https://via.placeholder.com/640x420.png?text=Foto+2',
+        'https://via.placeholder.com/640x420.png?text=Foto+3',
+        'https://via.placeholder.com/640x420.png?text=Foto+4'
+      ],
+      currentImageIndex: 0,
       description: 'Amplio apartamento con excelentes acabados, vigilancia y parqueadero doble.'
     },
     {
@@ -58,8 +69,92 @@ export class HabilidadesComponent implements AfterViewInit, OnDestroy {
       bathrooms: 2,
       price: 3400000,
       price_format: '$3.400.000',
-      image1: 'https://via.placeholder.com/640x420.png?text=Propiedad+2',
+      images: [
+        'https://via.placeholder.com/640x420.png?text=Propiedad+2',
+        'https://via.placeholder.com/640x420.png?text=Foto+2'
+      ],
+      currentImageIndex: 0,
       description: 'Apartamento amoblado en el norte de la ciudad, cerca a zonas comerciales.'
+    },
+    {
+      idpro: 3524764,
+      address: 'Cra. 6A No. 50 - 36',
+      city: 'Bogotá',
+      neighborhood: 'Chapinero Alto',
+      type: 'APARTAMENTO',
+      biz: 'VENTA',
+      area_cons: 66,
+      bedrooms: 3,
+      bathrooms: 2,
+      price: 440000000,
+      price_format: '440.000.000',
+      images: [
+        'https://s3-us-west-2.amazonaws.com/pictures.domus.la/inmobiliaria_183/5431_1_1771454244.jpg',
+        'https://via.placeholder.com/640x420.png?text=Foto+2',
+        'https://via.placeholder.com/640x420.png?text=Foto+3'
+      ],
+      currentImageIndex: 0,
+      description: 'Apartamento en venta Chapinero Alto 66Mts., 2 habitaciones grandes, terraza pequeña cubierta, cocina integral y parqueadero cubierto.'
+    },
+    {
+      idpro: 3524764,
+      address: 'Cra. 6A No. 50 - 36',
+      city: 'Bogotá',
+      neighborhood: 'Chapinero Alto',
+      type: 'APARTAMENTO',
+      biz: 'VENTA',
+      area_cons: 66,
+      bedrooms: 3,
+      bathrooms: 2,
+      price: 440000000,
+      price_format: '440.000.000',
+      images: [
+        'https://s3-us-west-2.amazonaws.com/pictures.domus.la/inmobiliaria_183/5431_1_1771454244.jpg',
+        'https://via.placeholder.com/640x420.png?text=Foto+2',
+        'https://via.placeholder.com/640x420.png?text=Foto+3'
+      ],
+      currentImageIndex: 0,
+      description: 'Apartamento en venta Chapinero Alto 66Mts., 2 habitaciones grandes, terraza pequeña cubierta, cocina integral y parqueadero cubierto.'
+    },
+    {
+      idpro: 3524764,
+      address: 'Cra. 6A No. 50 - 36',
+      city: 'Bogotá',
+      neighborhood: 'Chapinero Alto',
+      type: 'APARTAMENTO',
+      biz: 'VENTA',
+      area_cons: 66,
+      bedrooms: 3,
+      bathrooms: 2,
+      price: 440000000,
+      price_format: '440.000.000',
+      images: [
+        'https://s3-us-west-2.amazonaws.com/pictures.domus.la/inmobiliaria_183/5431_1_1771454244.jpg',
+        'https://via.placeholder.com/640x420.png?text=Foto+2',
+        'https://via.placeholder.com/640x420.png?text=Foto+3'
+      ],
+      currentImageIndex: 0,
+      description: 'Apartamento en venta Chapinero Alto 66Mts., 2 habitaciones grandes, terraza pequeña cubierta, cocina integral y parqueadero cubierto.'
+    },
+    {
+      idpro: 3524764,
+      address: 'Cra. 6A No. 50 - 36',
+      city: 'Bogotá',
+      neighborhood: 'Chapinero Alto',
+      type: 'APARTAMENTO',
+      biz: 'VENTA',
+      area_cons: 66,
+      bedrooms: 3,
+      bathrooms: 2,
+      price: 440000000,
+      price_format: '440.000.000',
+      images: [
+        'https://s3-us-west-2.amazonaws.com/pictures.domus.la/inmobiliaria_183/5431_1_1771454244.jpg',
+        'https://via.placeholder.com/640x420.png?text=Foto+2',
+        'https://via.placeholder.com/640x420.png?text=Foto+3'
+      ],
+      currentImageIndex: 0,
+      description: 'Apartamento en venta Chapinero Alto 66Mts., 2 habitaciones grandes, terraza pequeña cubierta, cocina integral y parqueadero cubierto.'
     }
   ];
 
@@ -94,6 +189,28 @@ export class HabilidadesComponent implements AfterViewInit, OnDestroy {
 
   public resetFilters() {
     this.filters = { biz: this.filters.biz, city: '', type: '', bedrooms: null, bathrooms: null, minPrice: null, maxPrice: null };
+  }
+
+  // Navegación de imágenes en las tarjetas
+  public nextImage(property: any, event: Event) {
+    event.stopPropagation();
+    if (property.images && property.images.length > 0) {
+      property.currentImageIndex = (property.currentImageIndex + 1) % property.images.length;
+    }
+  }
+
+  public prevImage(property: any, event: Event) {
+    event.stopPropagation();
+    if (property.images && property.images.length > 0) {
+      property.currentImageIndex = (property.currentImageIndex - 1 + property.images.length) % property.images.length;
+    }
+  }
+
+  public getCurrentImage(property: any): string {
+    if (property.images && property.images.length > 0) {
+      return property.images[property.currentImageIndex];
+    }
+    return '';
   }
 
   ngAfterViewInit(): void {

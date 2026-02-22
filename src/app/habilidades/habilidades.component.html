@@ -4,33 +4,82 @@
 
   <!-- === CONTENIDO: FILTROS Y LISTADO DE PROPIEDADES === -->
   <div class="skills-content">
-    <h2 class="section-title2">Un inmueble a tu medida</h2>
 
     <!-- FILTROS DE PROPIEDADES -->
-    <section class="filters-box">
-      <div class="filters-header">
-        <div class="tabs">
-          <button type="button" class="tab" [class.active]="filters.biz === 'VENTA'" (click)="setBiz('VENTA')">Venta</button>
-          <button type="button" class="tab" [class.active]="filters.biz === 'ALQUILER'" (click)="setBiz('ALQUILER')">Alquiler</button>
+    <section class="filters-wrapper">
+      <!-- Tabs externos elegantes -->
+      <div class="external-tabs">
+        <button type="button" 
+                class="external-tab" 
+                [class.active]="filters.biz === 'VENTA'" 
+                (click)="setBiz('VENTA')">
+          <i class="fas fa-tag"></i>
+          <span>Venta</span>
+        </button>
+        <button type="button" 
+                class="external-tab" 
+                [class.active]="filters.biz === 'ALQUILER'" 
+                (click)="setBiz('ALQUILER')">
+          <i class="fas fa-handshake"></i>
+          <span>Alquiler</span>
+        </button>
+        
+        <!-- Etiqueta de título decorativa -->
+        <div class="filter-title-badge">
+          <i class="fas fa-home"></i>
+          <span>Selecciona a tu medida</span>
         </div>
       </div>
 
-      <form class="filters-form" (ngSubmit)="0">
-        <input type="text" placeholder="Ciudad" [(ngModel)]="filters.city" name="city">
-        <select [(ngModel)]="filters.type" name="type">
-          <option value="">Tipo (cualquiera)</option>
-          <option value="APARTAMENTO">APARTAMENTO</option>
-          <option value="CASA">CASA</option>
-        </select>
-        <input type="number" placeholder="Habitaciones" [(ngModel)]="filters.bedrooms" name="bedrooms">
-        <input type="number" placeholder="Baños" [(ngModel)]="filters.bathrooms" name="bathrooms">
-        <input type="number" placeholder="Precio min" [(ngModel)]="filters.minPrice" name="minPrice">
-        <input type="number" placeholder="Precio max" [(ngModel)]="filters.maxPrice" name="maxPrice">
-        <div class="actions">
-          <button class="btn btn-search" type="button" (click)="0">Buscar</button>
-          <button class="btn" type="button" (click)="resetFilters()">Limpiar</button>
-        </div>
-      </form>
+      <!-- Caja de filtros con efecto destello -->
+      <div class="filters-box" [attr.data-active-tab]="filters.biz">
+        <form class="filters-form" (ngSubmit)="$event.preventDefault()">
+          <div class="filter-group">
+            <label><i class="fas fa-map-marker-alt"></i> Ciudad</label>
+            <input type="text" placeholder="Ej: Bogotá" [(ngModel)]="filters.city" name="city">
+          </div>
+          
+          <div class="filter-group">
+            <label><i class="fas fa-building"></i> Tipo</label>
+            <select [(ngModel)]="filters.type" name="type">
+              <option value="">Cualquier tipo</option>
+              <option value="APARTAMENTO">Apartamento</option>
+              <option value="CASA">Casa</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label><i class="fas fa-bed"></i> Habitaciones</label>
+            <input type="number" placeholder="Nº" [(ngModel)]="filters.bedrooms" name="bedrooms" min="0">
+          </div>
+          
+          <div class="filter-group">
+            <label><i class="fas fa-bath"></i> Baños</label>
+            <input type="number" placeholder="Nº" [(ngModel)]="filters.bathrooms" name="bathrooms" min="0">
+          </div>
+          
+          <div class="filter-group">
+            <label><i class="fas fa-dollar-sign"></i> Precio mínimo</label>
+            <input type="number" placeholder="Min" [(ngModel)]="filters.minPrice" name="minPrice" min="0">
+          </div>
+          
+          <div class="filter-group">
+            <label><i class="fas fa-dollar-sign"></i> Precio máximo</label>
+            <input type="number" placeholder="Max" [(ngModel)]="filters.maxPrice" name="maxPrice" min="0">
+          </div>
+          
+          <div class="filter-actions">
+            <button class="btn-primary" type="button">
+              <i class="fas fa-search"></i>
+              Buscar
+            </button>
+            <button class="btn-secondary" type="button" (click)="resetFilters()">
+              <i class="fas fa-redo"></i>
+              Limpiar
+            </button>
+          </div>
+        </form>
+      </div>
     </section>
 
     <!-- RESULTADOS: TARJETAS DE PROPIEDADES -->
@@ -38,21 +87,49 @@
       <div class="skills-grid">
 
         <div class="card property-card" *ngFor="let p of filteredProperties">
-          <div class="property-image" [style.backgroundImage]="'url(' + p.image1 + ')'">
+          <div class="property-image" [style.backgroundImage]="'url(' + getCurrentImage(p) + ')'">
             <div class="ribbon">{{ p.type }}</div>
-            <div class="price-badge">{{ p.price_format }}</div>
+            <div class="price-badge">${{ p.price_format }}</div>
+            
+            <!-- Controles de navegación de imágenes -->
+            <div class="image-controls" *ngIf="p.images && p.images.length > 1">
+              <button class="nav-arrow nav-prev" 
+                      (click)="prevImage(p, $event)"
+                      type="button"
+                      aria-label="Imagen anterior">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="nav-arrow nav-next" 
+                      (click)="nextImage(p, $event)"
+                      type="button"
+                      aria-label="Siguiente imagen">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+              
+              <!-- Indicador de fotos -->
+              <div class="image-indicator">
+                <span class="current-image">{{ p.currentImageIndex + 1 }}</span>
+                <span class="separator">/</span>
+                <span class="total-images">{{ p.images.length }}</span>
+              </div>
+            </div>
           </div>
           <div class="property-body">
             <h3 class="heading">{{ p.address }}</h3>
-            <p class="subinfo">{{ p.city }} — {{ p.neighborhood }}</p>
+            <p class="subinfo">
+              <span class="location-icon">
+                <span class="loader-shape-3"></span>
+              </span>
+              {{ p.city }} — {{ p.neighborhood }}
+            </p>
             <p class="description">{{ p.description }}</p>
             <div class="stats-row">
               <span class="stat">🏠 {{ p.area_cons }} m²</span>
-              <span class="stat">🛏 {{ p.bedrooms }}</span>
+              <span class="stat">🛏️ {{ p.bedrooms }}</span>
               <span class="stat">🛁 {{ p.bathrooms }}</span>
             </div>
             <div class="card-actions">
-              <a class="btn btn-buy" href="#">Ver detalle</a>
+              <a class="btn-buy" href="#" (click)="$event.preventDefault()">Ver detalle</a>
             </div>
           </div>
         </div>
