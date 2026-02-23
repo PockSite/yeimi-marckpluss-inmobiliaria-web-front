@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
+import { DomusService } from '../core/service/domus.service';
 
 @Component({
   selector: 'app-cursos',
@@ -94,7 +95,16 @@ export class CursosComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild('track', { static: false }) trackRef!: ElementRef<HTMLDivElement>;
   @ViewChild('carousel', { static: false }) carouselRef!: ElementRef<HTMLDivElement>;
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, private domusService: DomusService) {
+    domusService.getProperties().subscribe({
+      next: (response) => {
+        console.log('Propiedades obtenidas:', response);
+      },
+      error: (error) => {
+        console.error('Error al obtener propiedades:', error);
+      }
+    });
+   }
 
   ngOnInit(): void {
     this.updateVisibleCards(); // ajustar al iniciar (this will setup slides)

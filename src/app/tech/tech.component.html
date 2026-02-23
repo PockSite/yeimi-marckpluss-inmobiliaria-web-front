@@ -1,19 +1,15 @@
 <!-- 7. LENGUAJES Y HERRAMIENTAS -->
 <div class="tech-section" id="tecnologias">
-  <h2 class="section-title2">Lenguajes y Herramientas</h2>
-  
-  <div class="tech-categories">
-    <div class="tech-category" *ngFor="let category of techCategories">
-      <h3>{{ category.name }}</h3>
-      
-      <div class="tech-icons">
-        <div class="tech-icon" 
-             *ngFor="let tech of category.technologies; let i = index"
-             [style.animation-delay]="i * 0.1 + 's'">
-          <i [class]="tech.icon" [style.color]="tech.color"></i>
-          <span>{{ tech.name }}</span>
-        </div>
-      </div>
+  <div class="section-title2">Con nosotros tendrás</div>
+
+  <div class="tech-icons" role="list">
+    <div class="tech-icon" 
+         *ngFor="let value of companyValues; let i = index"
+         [style.animation-delay]="i * 0.12 + 's'" role="listitem">
+      <i [class]="value.icon" [style.color]="value.color"></i>
+      <span class="value-title">{{ value.title }}</span>
+      <p class="value-text">{{ value.text }}</p>
     </div>
   </div>
+
 </div>

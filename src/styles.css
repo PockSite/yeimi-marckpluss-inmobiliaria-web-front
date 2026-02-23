@@ -2,7 +2,6 @@
 
 :root {
   --color-main: #340d10;
-  --color-main-rgb: 6, 5, 14;
   --color-main2: #691420;
   --color-second: #e6e7e9;
   --color-second-rgb: 235, 94, 40;
@@ -10,6 +9,7 @@
   --color-title-rgb: 218, 194, 158;
   --color-border: #c6ac8f;
   --color-text2: #ffffff;
+  --color-text:#181717;
   --color-tech: rgba(255, 255, 255, 0.03);
 
   --color-btn-contact: #7a3eff;

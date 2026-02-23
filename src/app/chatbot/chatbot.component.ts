@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ChatService } from '../chatbot/service';
 
 interface ChatMessage {
   text: string;
@@ -12,16 +12,21 @@ interface ChatMessage {
   styleUrls: ['./chatbot.component.css']
 })
 export class ChatbotComponent {
+
   isOpen = false;
   messages: ChatMessage[] = [
-    { text: '¡Hola! 👋 Soy el asistente virtual de Daniel. ¿En qué puedo ayudarte hoy?', sender: 'bot' }
+    { 
+      text: '¡Hola! 👋 Soy el asistente virtual de Daniel. ¿En qué puedo ayudarte hoy?', 
+      sender: 'bot' 
+    }
   ];
+
   userMessage = '';
   isLoading = false;
 
-  userId = Date.now() + Math.floor(Math.random() + 111 * 5000);
+  userId = Date.now() + Math.floor(Math.random() * 5000);
 
-  constructor(private http: HttpClient) { }
+  constructor(private chatService: ChatService) { }
 
   toggleChat() {
     this.isOpen = !this.isOpen;
@@ -31,29 +36,32 @@ export class ChatbotComponent {
     if (!this.userMessage.trim() || this.isLoading) return;
 
     const messageToSend = this.userMessage.trim();
+
+    // Mostrar mensaje del usuario
     this.messages.push({ text: messageToSend, sender: 'user' });
 
     this.userMessage = '';
     this.isLoading = true;
 
-    this.http.post<{ answer: string }>('https://asistente-de-ia-portafolio.onrender.com/api/chat', {
-      userId: this.userId,
-      message: messageToSend
-    }).subscribe({
+    // 🔥 Usando el servicio
+    this.chatService.sendMessage(messageToSend).subscribe({
       next: (response) => {
-        const reply = response?.answer || 'No pude responder en este momento 😕';
+        // Ajusta según tu interfaz ChatResponse
+        const reply = response?.response || 'No pude responder en este momento 😕';
+
         this.messages.push({ text: reply, sender: 'bot' });
         this.isLoading = false;
       },
       error: (error) => {
         console.error('Chatbot error:', error);
+
         this.messages.push({
           text: 'Lo siento, ocurrió un error al conectar con el servidor.',
           sender: 'bot'
         });
+
         this.isLoading = false;
       }
     });
   }
-
 }
