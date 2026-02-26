@@ -296,6 +296,7 @@ button:active .button-text {
   line-height: 1.3;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -425,6 +426,9 @@ button:active .button-text {
 }
 
 .card .bottom-section .stat-icon { font-size: 1rem; }
+.card .bottom-section .stat-icon i {
+  color: var(--color-text2);
+}
 
 /* favorite-toggle removed */
 
@@ -436,22 +440,89 @@ button:active .button-text {
 @media (max-width: 768px) {
   .card {
     flex: 0 0 calc(100% / 1.05);
-    height: 260px;
+    height: 320px;
     display: flex;
     flex-direction: column;
     width: auto;
   }
 
-  .card .top-section { width: 100%; min-width: 100%; height: 140px; }
-  .card .bottom-section { width: 100%; padding: 14px; }
+  .card .top-section { 
+    width: 100%; 
+    min-width: 100%; 
+    height: 200px; /* Aumentado de 140px a 200px para que la imagen se vea más */
+  }
+  
+  .card .bottom-section { 
+    width: 100%; 
+    padding: 12px 14px; /* Padding reducido */
+  }
+
+  /* Ajustar tamaño de textos para móvil */
+  .card .bottom-section .title {
+    font-size: 1.05rem;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .card .bottom-section .desc {
+    font-size: 0.85rem;
+    line-height: 1.35;
+    margin-top: 4px;
+    -webkit-line-clamp: 2; /* Limitar a 2 líneas en móvil */
+    line-clamp: 2;
+  }
+
+  .card .bottom-section .meta-row {
+    margin-top: 6px;
+    font-size: 0.82rem;
+  }
+
+  .card .bottom-section .location .loc-text {
+    font-size: 0.85rem;
+  }
+
+  .card .bottom-section .stats-row {
+    gap: 10px;
+    margin-top: 6px;
+    font-size: 0.82rem;
+  }
+
+  .card .bottom-section .stat-icon {
+    font-size: 0.9rem;
+  }
+
+  .card .top-section .price-badge {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+    right: 10px;
+    top: 10px;
+  }
 
   .carousel-btn { display: none; }
   .carousel { margin-left: 10px; margin-right: 10px; }
 }
 
 @media (max-width: 375px) {
-  .card { height: auto; }
-  .card .top-section { height: 160px; }
+  .card { 
+    height: 300px; 
+  }
+  
+  .card .top-section { 
+    height: 180px; /* Aumentado de 160px a 180px */
+  }
+
+  .card .bottom-section .title {
+    font-size: 1rem;
+  }
+
+  .card .bottom-section .desc {
+    font-size: 0.8rem;
+  }
+
+  .card .bottom-section .meta-row,
+  .card .bottom-section .stats-row {
+    font-size: 0.78rem;
+  }
 }
 
 /* Botón base (posición y hover ya la tienes definida) */
@@ -575,15 +646,11 @@ button:active .button-text {
     display: none; /* Ocultamos botones en móviles */
   }
 
-
   .carousel {
-
-  margin-left: 10px;
-  margin-right: 10px ;
-  gap: 5px;
-}
-
-
+    margin-left: 10px;
+    margin-right: 10px;
+    gap: 5px;
+  }
 }
 
 /* Celulares pequeños */
@@ -598,9 +665,8 @@ button:active .button-text {
   }
 
   .carousel {
-
-  margin-left: 10px;
-  margin-right: 10px ;
-  gap: 5px;
-}
+    margin-left: 10px;
+    margin-right: 10px;
+    gap: 5px;
+  }
 }

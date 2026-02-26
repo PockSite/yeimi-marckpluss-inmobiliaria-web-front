@@ -16,7 +16,7 @@ export class ContactComponent {
   ];
 
   socialLinks = [
-    { icon: 'fab fa-linkedin', url: '' },
+    { icon: 'fab fa-whatsapp', url: '' },
     { icon: 'fab fa-google', url: 'mailto:' },
     { icon: 'fab fa-instagram', url: '' }
   ];

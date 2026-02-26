@@ -18,6 +18,18 @@ export class HeaderTopComponent implements OnInit {
   activeTab = 'Inicio';
   isMobile = false;
 
+  // Filtrar navItems para mobile (omitir 'Inicio' ya que el logo será el botón home)
+  get mobileNavItems() {
+    return this.navItems.filter(item => item.name !== 'Inicio');
+  }
+
+  // Método para navegar a home desde el logo
+  goToHome(event: Event) {
+    event.preventDefault();
+    this.activeTab = 'Inicio';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   ngOnInit() {
     this.checkScreenSize();
     window.addEventListener('resize', () => this.checkScreenSize());

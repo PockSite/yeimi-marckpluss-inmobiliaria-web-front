@@ -33,6 +33,14 @@ export class HabilidadesComponent implements AfterViewInit, OnDestroy {
     maxPrice: null
   };
 
+  // Estado del dropdown
+  public isTypeDropdownOpen = false;
+  public typeOptions = [
+    { value: '', label: 'Cualquier tipo' },
+    { value: 'APARTAMENTO', label: 'Apartamento' },
+    { value: 'CASA', label: 'Casa' }
+  ];
+
   get filteredProperties(): any[] {
     return this.properties.filter(p => {
       // filtrar por tipo de negocio (venta/alquiler)
@@ -51,8 +59,23 @@ export class HabilidadesComponent implements AfterViewInit, OnDestroy {
     this.filters.biz = b;
   }
 
+  public toggleTypeDropdown() {
+    this.isTypeDropdownOpen = !this.isTypeDropdownOpen;
+  }
+
+  public selectType(value: string) {
+    this.filters.type = value;
+    this.isTypeDropdownOpen = false;
+  }
+
+  public getTypeLabel() {
+    const selected = this.typeOptions.find(opt => opt.value === this.filters.type);
+    return selected ? selected.label : 'Cualquier tipo';
+  }
+
   public resetFilters() {
     this.filters = { biz: this.filters.biz, city: '', type: '', bedrooms: null, bathrooms: null, minPrice: null, maxPrice: null };
+    this.isTypeDropdownOpen = false;
   }
 
   // Navegación de imágenes en las tarjetas

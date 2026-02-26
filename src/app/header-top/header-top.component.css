@@ -166,3 +166,78 @@
     display: inline;
   }
 }
+
+/* Responsive Mobile Layout */
+/* Desktop: mostrar logo izquierda y navbar derecha */
+.desktop-logo,
+.desktop-nav {
+  display: flex;
+}
+
+.mobile-nav-layout {
+  display: none;
+}
+
+/* Mobile: ocultar desktop, mostrar layout mobile con logo centrado */
+@media (max-width: 768px) {
+  /* Ocultar versión desktop */
+  .desktop-logo,
+  .desktop-nav {
+    display: none;
+  }
+
+  /* Mostrar layout mobile */
+  .mobile-nav-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1.5rem;
+  }
+
+  .mobile-nav-left,
+  .mobile-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 1;
+  }
+
+  .mobile-nav-left {
+    justify-content: flex-start;
+  }
+
+  .mobile-nav-right {
+    justify-content: flex-end;
+  }
+
+  /* Logo centrado en mobile */
+  .mobile-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .mobile-logo:hover {
+    transform: scale(1.05);
+  }
+
+  .mobile-logo .lion-logo {
+    height: 45px;
+    width: auto;
+  }
+
+  /* Ajustar tamaño de botones en mobile */
+  .mobile-nav-layout .nav-item {
+    padding: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  /* Ajustar altura del navbar en mobile */
+  .navbar-inner {
+    height: 55px;
+    padding: 0.5rem 0.75rem;
+  }
+}

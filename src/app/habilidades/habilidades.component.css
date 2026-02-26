@@ -202,10 +202,9 @@
 
 .filter-group label {
   align-items: center;
-  color: var(--color-title);
+  color: var(--color-text);
   display: flex;
   font-size: 0.85rem;
-  font-weight: 600;
   gap: 6px;
 }
 
@@ -219,7 +218,7 @@
   background: #f8f9fa;
   border: 2px solid #e9ecef;
   border-radius: 10px;
-  color: var(--color-title);
+  color: var(--color-text);
   font-size: 0.95rem;
   outline: none;
   padding: 12px 16px;
@@ -245,6 +244,105 @@
   cursor: pointer;
   padding-right: 36px;
 }
+
+/* ============================================
+   CUSTOM SELECT DROPDOWN
+   ============================================ */
+
+.custom-select {
+  position: relative;
+}
+
+.select-trigger {
+  align-items: center;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  font-size: 0.95rem;
+  gap: 10px;
+  justify-content: space-between;
+  outline: none;
+  padding: 12px 16px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.select-trigger:hover {
+  border-color: var(--color-main2);
+}
+
+.select-trigger:focus {
+  background: #fff;
+  border-color: var(--color-main2);
+  box-shadow: 0 0 0 4px rgba(56, 178, 172, 0.1);
+}
+
+.select-trigger i {
+  color: var(--color-main2);
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.select-dropdown {
+  animation: slideDown 0.3s ease forwards;
+  background: #fff;
+  border: 2px solid var(--color-main2);
+  border-radius: 10px;
+  bottom: auto;
+  box-shadow: 0 8px 24px rgba(12, 36, 70, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  left: 0;
+  margin-top: 8px;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 1000;
+}
+
+.select-option {
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  outline: none;
+  padding: 12px 16px;
+  text-align: left;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.select-option:hover {
+  background: #f8f9fa;
+  color: var(--color-main2);
+  padding-left: 18px;
+}
+
+.select-option.active {
+  background: rgba(56, 178, 172, 0.1);
+  color: var(--color-main2);
+  font-weight: 600;
+  padding-left: 18px;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 /* Botones de acción */
 .filter-actions {
@@ -307,7 +405,7 @@
 .btn-secondary {
   background: #fff;
   border: 2px solid #e9ecef;
-  color: var(--color-title);
+  color: var(--color-text);
 }
 
 .btn-secondary:hover {
@@ -493,7 +591,7 @@
 }
 
 .property-body .heading {
-  color: var(--color-title);
+  color: var(--color-text);
   font-size: 1.15rem;
   font-weight: 700;
   line-height: 1.3;
@@ -569,8 +667,8 @@
 }
 
 .stats-row {
-  border-bottom: 1px solid #f0f0f0;
-  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--color-main2);
+  border-top: 1px solid var(--color-main2);
   color: var(--color-title);
   display: flex;
   font-size: 0.95rem;
@@ -585,6 +683,19 @@
   gap: 6px;
 }
 
+.stats-row .stat-icon i {
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+.stats-row .stat-value {
+  color: var(--color-text);
+}
+
+.stats-row .metrica {
+  color: var(--color-text);
+  font-size: 0.85rem;
+}
 .card-actions {
   align-items: center;
   display: flex;

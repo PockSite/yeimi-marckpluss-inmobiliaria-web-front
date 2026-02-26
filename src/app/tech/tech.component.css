@@ -3,7 +3,8 @@
   text-align: center;
   padding: 50px 20px;
   background: var(--color-main);
-  height: 400px;
+  min-height: 400px;
+  height: auto;
 }
 
 
@@ -11,7 +12,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 40px;
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .tech-icon {
@@ -19,6 +23,7 @@
   flex-direction: column;
   align-items: center;
   width: 220px;
+    min-width: 180px;
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.6s ease-in-out;
@@ -50,13 +55,13 @@
   font-size: 1.7rem;
   font-weight: 900;
   color: var(--color-title);
-  margin-bottom: 70px;
+  margin-bottom: 50px;
   text-transform: uppercase;
   letter-spacing: 3px;
   position: relative;
   animation: fadeInDown 1s ease forwards;
   font-family: var(--font-title);
-  margin-top: 70px;
+  margin-top: 0;
 }
 
 /* Categorías organizadas en columnas centradas */
@@ -204,75 +209,256 @@
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
-   .section-title2 {
-    font-size: 1.6rem;
-  }
-  .timeline::before {
-    left: 20px;
-  }
-  
-  .timeline-item {
-    width: 100%;
-    left: 0 !important;
-    padding-left: 60px !important;
-    padding-right: 0 !important;
-  }
-  
-  .timeline-item::before {
-    left: 10px !important;
-  }
-  
-  .projects-container {
-    flex-direction: column;
-  }
-  
-  .contact-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  
-  .carousel-btn.left { left: -20px; }
-  .carousel-btn.right { right: -20px; }
-  
-  .card {
-    min-width: calc(100% / 2);
-  }
-  
-  .tech-icons {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  }
-}
 
-
-@media (max-width: 380px) {
+/* Desktop Grande (>1440px) */
+@media (min-width: 1441px) {
+  .tech-section {
+    padding: 60px 40px;
+  }
 
   .section-title2 {
-   font-size: 1.4rem;
+    font-size: 2rem;
+    margin-bottom: 60px;
   }
 
-
   .tech-icons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* ⭐ 2 columnas siempre */
-    gap: 20px;
-    justify-items: center; /* ⭐ Centra cada tarjetica */
-    align-items: center;   /* ⭐ Mantiene alineado verticalmente */
-    width: 100%;
+    gap: 40px;
+    max-width: 1600px;
   }
 
   .tech-icon {
-    width: 100px;     /* tarjeta más pequeña */
-    padding: 15px;
-    text-align: center; /* asegura centrado interno */
+    width: 240px;
   }
 
   .tech-icon i {
-    font-size: 2.2rem; /* ícono más pequeño */
+    font-size: 3.5rem;
   }
 
-  .tech-icon span {
-    font-size: 0.8rem; /* texto ajustado */
+  .value-title {
+    font-size: 1.1rem;
+  }
+
+  .value-text {
+    font-size: 1rem;
+  }
+}
+
+/* Desktop (1024px - 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .tech-section {
+    padding: 50px 30px;
+  }
+
+  .tech-icons {
+    gap: 30px;
+  }
+
+  .tech-icon {
+    width: 210px;
+  }
+}
+
+/* Tablet (768px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .tech-section {
+    padding: 40px 25px;
+  }
+
+  .section-title2 {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+  }
+
+  .tech-icons {
+    gap: 25px;
+  }
+
+  .tech-icon {
+    width: 180px;
+    padding: 18px;
+  }
+
+  .tech-icon i {
+    font-size: 2.8rem;
+    margin-bottom: 12px;
+  }
+
+  .value-title {
+    font-size: 0.95rem;
+  }
+
+  .value-text {
+    font-size: 0.88rem;
+  }
+}
+
+/* Mobile Grande (480px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .tech-section {
+    padding: 35px 20px;
+  }
+
+  .section-title2 {
+    font-size: 1.4rem;
+    margin-bottom: 35px;
+    letter-spacing: 2px;
+  }
+
+  .tech-icons {
+    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+
+  .tech-icon:nth-child(3) {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
+  .tech-icon {
+    width: 100%;
+    max-width: 200px;
+    padding: 16px;
+  }
+
+  .tech-icon i {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+
+  .value-title {
+    font-size: 0.92rem;
+  }
+
+  .value-text {
+    font-size: 0.85rem;
+    line-height: 1.35;
+  }
+}
+
+/* Mobile Mediano (380px - 480px) */
+@media (min-width: 381px) and (max-width: 480px) {
+  .tech-section {
+    padding: 30px 15px;
+  }
+
+  .section-title2 {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    letter-spacing: 1.5px;
+  }
+
+  .tech-icons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    justify-items: center;
+    padding: 0 10px;
+  }
+
+  .tech-icon:nth-child(3) {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
+  .tech-icon {
+    width: 100%;
+    max-width: 160px;
+    padding: 14px;
+  }
+
+  .tech-icon i {
+    font-size: 2.3rem;
+    margin-bottom: 8px;
+  }
+
+  .value-title {
+    font-size: 0.88rem;
+  }
+
+  .value-text {
+    font-size: 0.82rem;
+    line-height: 1.3;
+  }
+}
+
+/* Mobile Pequeño (<= 380px) */
+@media (max-width: 380px) {
+  .tech-section {
+    padding: 25px 12px;
+  }
+
+  .section-title2 {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+  }
+
+  .tech-icons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    justify-items: center;
+    align-items: start;
+    padding: 0 8px;
+  }
+
+  .tech-icon:nth-child(3) {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
+  .tech-icon {
+    width: 100%;
+    max-width: 140px;
+    padding: 12px 8px;
+  }
+
+  .tech-icon i {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  .value-title {
+    font-size: 0.82rem;
+    margin-top: 4px;
+  }
+
+  .value-text {
+    font-size: 0.78rem;
+    line-height: 1.25;
+    margin-top: 6px;
+  }
+}
+
+/* Ajustes adicionales para pantallas muy pequeñas (<320px) */
+@media (max-width: 320px) {
+  .section-title2 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  .tech-icons {
+    gap: 12px;
+  }
+
+  .tech-icon {
+    max-width: 130px;
+    padding: 10px 6px;
+  }
+
+  .tech-icon i {
+    font-size: 1.8rem;
+  }
+
+  .value-title {
+    font-size: 0.78rem;
+  }
+
+  .value-text {
+    font-size: 0.75rem;
   }
 }
 

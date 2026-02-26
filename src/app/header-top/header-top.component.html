@@ -1,19 +1,18 @@
 <div class="tubelight-navbar" [class.hidden-nav]="isHidden">
   <div class="navbar-inner">
-    <div class="logo-wrap">
+    <!-- Logo para Desktop -->
+    <div class="logo-wrap desktop-logo">
       <a href="/">
         <img class="lion-logo" src="assets/images/logoblanco.png" alt="Logo">
       </a>
     </div>
 
-    <div class="navbar-container">
+    <!-- Navbar Container para Desktop -->
+    <div class="navbar-container desktop-nav">
       <a *ngFor="let item of navItems" [href]="item.url" (click)="setActiveTab(item.name, $event)" class="nav-item"
         [class.active]="activeTab === item.name">
 
         <span class="nav-text">{{ item.name }}</span>
-        <span class="nav-icon d-md-none">
-          <i [class]="item.icon"></i>
-        </span>
 
         <div *ngIf="activeTab === item.name" class="lamp-effect" aria-hidden="true">
           <div class="lamp-base">
@@ -23,6 +22,48 @@
           </div>
         </div>
       </a>
+    </div>
+
+    <!-- Layout Mobile: 2 botones | Logo | 2 botones -->
+    <div class="mobile-nav-layout">
+      <!-- Primeros 2 botones a la izquierda -->
+      <div class="mobile-nav-left">
+        <a *ngFor="let item of mobileNavItems.slice(0, 2)" [href]="item.url" (click)="setActiveTab(item.name, $event)" 
+           class="nav-item" [class.active]="activeTab === item.name">
+          <span class="nav-icon">
+            <i [class]="item.icon"></i>
+          </span>
+          <div *ngIf="activeTab === item.name" class="lamp-effect" aria-hidden="true">
+            <div class="lamp-base">
+              <div class="lamp-light"></div>
+              <div class="lamp-glow-top"></div>
+              <div class="lamp-glow-bottom"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Logo centrado clickable (botón home) -->
+      <div class="logo-wrap mobile-logo" (click)="goToHome($event)">
+        <img class="lion-logo" src="assets/images/logoblanco.png" alt="Logo Home">
+      </div>
+
+      <!-- Últimos 2 botones a la derecha -->
+      <div class="mobile-nav-right">
+        <a *ngFor="let item of mobileNavItems.slice(2, 4)" [href]="item.url" (click)="setActiveTab(item.name, $event)" 
+           class="nav-item" [class.active]="activeTab === item.name">
+          <span class="nav-icon">
+            <i [class]="item.icon"></i>
+          </span>
+          <div *ngIf="activeTab === item.name" class="lamp-effect" aria-hidden="true">
+            <div class="lamp-base">
+              <div class="lamp-light"></div>
+              <div class="lamp-glow-top"></div>
+              <div class="lamp-glow-bottom"></div>
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </div>

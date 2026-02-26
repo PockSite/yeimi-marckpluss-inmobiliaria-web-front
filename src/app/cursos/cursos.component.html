@@ -38,9 +38,9 @@
             </div>
           </div>
           <div class="stats-row">
-            <div *ngIf="course.area" class="stat"><span class="stat-icon">📐</span><span class="stat-value">{{course.area}}</span></div>
-            <div *ngIf="course.rooms" class="stat"><span class="stat-icon">🛏</span><span class="stat-value">{{course.rooms}}</span></div>
-            <div *ngIf="course.baths" class="stat"><span class="stat-icon">🛁</span><span class="stat-value">{{course.baths}}</span></div>
+            <div *ngIf="course.area" class="stat"><span class="stat-icon"><i class="fas fa-ruler-combined" aria-hidden="true"></i></span><span class="stat-value">{{course.area}}</span></div>
+            <div *ngIf="course.rooms" class="stat"><span class="stat-icon"><i class="fas fa-bed" aria-hidden="true"></i></span><span class="stat-value">{{course.rooms}}</span></div>
+            <div *ngIf="course.baths" class="stat"><span class="stat-icon"><i class="fas fa-bath" aria-hidden="true"></i></span><span class="stat-value">{{course.baths}}</span></div>
           </div>
         </div>
       </div>

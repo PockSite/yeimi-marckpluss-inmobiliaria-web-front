@@ -16,7 +16,7 @@ export class ChatbotComponent {
   isOpen = false;
   messages: ChatMessage[] = [
     { 
-      text: '¡Hola! 👋 Soy el asistente virtual de Daniel. ¿En qué puedo ayudarte hoy?', 
+      text: '¡Hola! 👋 Soy el asistente virtual de MarckPluss. ¿En qué puedo ayudarte hoy?', 
       sender: 'bot' 
     }
   ];

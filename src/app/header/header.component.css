@@ -27,49 +27,49 @@
 }
 
 .profile-pic {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 auto 15px auto;
-  border: 3px solid var(--color-text2);
+  width: 120px;
+  height: auto;
+  overflow: visible;
+  margin: 0 auto 20px auto;
+  border: none;
+  background: transparent;
 }
 
 .profile-pic img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 
 .name {
-  font-size: 19px;
+  font-size: 18px;
   font-weight: bold;
   color: var(--color-text2);
   margin: 5px 0;
 }
 
 .role {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--color-title);
-  margin: 5px 0;
+  margin: 4px 0;
 }
 
 .focus {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
   color: var(--color-second);
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 
 .contact-info {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--color-text2);
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 .contact-info p {
-  margin: 8px 0;
+  margin: 6px 0;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -77,35 +77,167 @@
 
 .contact-info i {
   color: var(--color-title);
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .action-buttons {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  width: 70%;
+  gap: 10px;
+  width: 75%;
   text-align: center;
 }
 
-.btn {
-  display: block;
-  padding: 9px;
+/* Botones Modernos con Efecto Hover */
+.btn-modern {
+  background-color: #fff;
+  border: 2px solid;
+  padding: 8px 12px;
+  position: relative;
+  width: 85%;
+  height: 1.7em;
+  transition: 0.5s ease;
+  font-size: 15px;
   border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
   text-decoration: none;
-  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
 }
 
-.contact-btn { background: var(--color-btn-contact); color: var(--color-text-primary); }
-.linkedin-btn { background: var(--color-btn-linkedin); color: var(--color-text-primary); }
-.github-btn { background: var(--color-btn-github); color: var(--color-text-primary); }
-.cv-btn { background: var(--color-btn-cv); color: var(--color-text-primary); }
+.btn-modern p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  transition: 0.5s ease;
+  font-weight: 600;
+  white-space: nowrap;
+  font-size: 14px;
+}
 
-.btn:hover {
-  opacity: 0.85;
-  transform: translateY(-2px);
+.btn-modern svg {
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  transition: 0.5s ease;
+  height: 1.2em;
+  width: 1.2em;
+}
+
+/* Instagram Button */
+.instagram-btn {
+  border-color: #E1306C;
+}
+
+.instagram-btn p {
+  color: #E1306C;
+}
+
+.instagram-btn svg {
+  fill: #fff;
+}
+
+.instagram-btn:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.instagram-btn:hover p {
+  left: 1.2em;
+  transform: translate(0, -50%);
+  color: #fff;
+}
+
+.instagram-btn:hover svg {
+  opacity: 1;
+}
+
+/* LinkedIn Button */
+.linkedin-btn {
+  border-color: #0077B5;
+}
+
+.linkedin-btn p {
+  color: #0077B5;
+}
+
+.linkedin-btn svg {
+  fill: #fff;
+}
+
+.linkedin-btn:hover {
+  background-color: #0077B5;
+}
+
+.linkedin-btn:hover p {
+  left: 1.2em;
+  transform: translate(0, -50%);
+  color: #fff;
+}
+
+.linkedin-btn:hover svg {
+  opacity: 1;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+  border-color: #25D366;
+}
+
+.whatsapp-btn p {
+  color: #25D366;
+}
+
+.whatsapp-btn svg {
+  fill: #fff;
+}
+
+.whatsapp-btn:hover {
+  background-color: #25D366;
+}
+
+.whatsapp-btn:hover p {
+  left: 1.2em;
+  transform: translate(0, -50%);
+  color: #fff;
+}
+
+.whatsapp-btn:hover svg {
+  opacity: 1;
+}
+
+/* CV/Download Button */
+.cv-btn {
+  border-color: #6C63FF;
+}
+
+.cv-btn p {
+  color: #6C63FF;
+}
+
+.cv-btn svg {
+  fill: #fff;
+}
+
+.cv-btn:hover {
+  background-color: #6C63FF;
+}
+
+.cv-btn:hover p {
+  left: 1em;
+  transform: translate(0, -50%);
+  color: #fff;
+}
+
+.cv-btn:hover svg {
+  opacity: 1;
 }
 
 /* === ESTILOS CELULAR (Navbar) === */
@@ -114,18 +246,49 @@
   background: var(--color-main);
   color: var(--color-text2);
   position: fixed;
-  top: 0;
+  top: 60px;
   left: 0;
   z-index: 200;
-  padding: 30px;
-  height: 1000px ;
-  margin-top: 100px;
+  padding: 15px;
+  max-height: calc(100vh - 60px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-header::-webkit-scrollbar {
+  width: 5px;
+}
+
+.mobile-header::-webkit-scrollbar-thumb {
+  background: var(--color-second);
+  border-radius: 10px;
+}
+
+.mobile-header::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .profile-sectionmov {
   text-align: center;
-  margin-bottom: 25px;
-  margin-top: 100px;
+  margin-bottom: 15px;
+  padding-top: 15px;
+}
+
+.logo-container-mobile {
+  width: 100px;
+  height: auto;
+  margin: 0 auto 15px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-mobile {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 80px;
 }
 
 .profile-picmov {
@@ -144,14 +307,14 @@
 }
 
 .contact-infomov {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--color-text2);
-  margin-bottom: 22px;
-  margin-left: 25px;
+  margin-bottom: 10px;
+  padding: 0 15px;
 }
 
 .contact-infomov p {
-  margin: 8px 0;
+  margin: 5px 0;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -159,16 +322,60 @@
 
 .contact-infomov i {
   color: var(--color-title);
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .action-buttonsmov {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  width: 80%;
+  gap: 10px;
+  width: 90%;
   text-align: center;
-  margin-left: 25px;
+  margin: 0 auto;
+  margin-top: 15px;
+  padding-bottom: 20px;
+}
+
+/* Menú de Navegación Mobile */
+.mobile-nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 15px;
+  margin: 10px 0;
+}
+
+.nav-link-mobile {
+  color: var(--color-text2);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  text-align: left;
+  border-left: 3px solid transparent;
+}
+
+.nav-link-mobile:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-left-color: var(--color-second);
+  transform: translateX(5px);
+  color: var(--color-second);
+}
+
+.nav-link-mobile:active {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Divisor decorativo */
+.divider-mobile {
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-second), transparent);
+  margin: 10px auto;
+  opacity: 0.5;
 }
 
 

@@ -1,16 +1,16 @@
 <div class="chatbot-container">
     <!-- Floating Button -->
     <button class="chat-toggle-btn" (click)="toggleChat()">
-        <img *ngIf="!isOpen" src="assets/images/logonew2.png" alt="Chat" class="chat-toggle-icon">
+        <img *ngIf="!isOpen" src="assets/images/logorojo.png" alt="Chat" class="chat-toggle-icon">
         <span *ngIf="isOpen">✖</span>
     </button>
 
     <!-- Chat Window -->
     <div class="chat-window" [class.open]="isOpen">
         <div class="chat-header">
-            <img src="assets/images/logonew2.png" class="avatar" alt="LionBot">
+            <img src="assets/images/logorojo.png" class="avatar" alt="LionBot">
             <div class="title">
-                <h3>LionBot</h3>
+                <h3>Chatbot MarckPluss</h3>
                 <p>En línea</p>
             </div>
             <button class="close-btn" (click)="toggleChat()">✖</button>
