@@ -7,69 +7,7 @@ import { DomusService } from '../core/service/domus.service';
   styleUrls: ['./cursos.component.css']
 })
 export class CursosComponent implements OnInit, OnDestroy, AfterViewInit {
-  // 🌟 Datos de ejemplo: ahora representan inmuebles (puedes editar estos objetos)
-  estate = [
-    {
-      image: 'https://images.unsplash.com/photo-1560184897-e8a8f7f2c9b2?w=1200&q=80&auto=format&fit=crop',
-      name: 'Casa Modernista en Chapinero',
-      price: 8312500,
-      priceFormatted: '$ 8,312,500',
-      description: 'Amplia casa de 3 habitaciones con acabados de lujo, patio interno y garaje para 2 vehículos. Ideal para familias.',
-      location: 'Chapinero, Bogotá',
-      area: '886 sqft',
-      rooms: 3,
-      baths: 2,
-      
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&q=80&auto=format&fit=crop',
-      name: 'Apartamento con vista al río',
-      price: 13512002,
-      priceFormatted: '$ 13,512,002',
-      description: 'Apartamento moderno con balcón, 2 habitaciones, cocina abierta y parqueadero privado.',
-      location: 'Barranquilla - Centro',
-      area: '120 m²',
-      rooms: 2,
-      baths: 2,
-      
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80&auto=format&fit=crop',
-      name: 'Casa en la montaña',
-      price: 6805,
-      priceFormatted: '$ 6,805',
-      description: 'Finca pequeña con vista panorámica, 2 habitaciones y amplia zona verde. Perfecta para descanso.',
-      location: 'Medellín - Alto de las Palmas',
-      area: '1500 m²',
-      rooms: 2,
-      baths: 1,
-      
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1598928506311-5c1a45b9d3e9?w=1200&q=80&auto=format&fit=crop',
-      name: 'Loft céntrico',
-      price: 420000,
-      priceFormatted: '$ 420,000',
-      description: 'Loft de un solo ambiente, ideal para profesionales, con acabados minimalistas y buena iluminación natural.',
-      location: 'Cali - Zona G',
-      area: '55 m²',
-      rooms: 1,
-      baths: 1,
-      
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1600585154343-6c8a8b9e3d7b?w=1200&q=80&auto=format&fit=crop',
-      name: 'Departamento de lujo',
-      price: 2150000,
-      priceFormatted: '$ 2,150,000',
-      description: 'Departamento con 3 dormitorios, 2 baños, cocina equipada y terraza con asador.',
-      location: 'Santa Marta - Rodadero',
-      area: '140 m²',
-      rooms: 3,
-      baths: 2,
-      
-    }
-  ];
+  estate: any[] = [];
 
   currentIndex = 0;
   visibleCards = 3; // 🌟 número de tarjetas visibles (depende del ancho de pantalla)
