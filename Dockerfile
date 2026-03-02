@@ -1,33 +1,28 @@
-# ---------- Etapa 1: Build Angular ----------
-FROM node:20-alpine AS build
+# ---------- BUILD CON BUN ----------
+FROM oven/bun:1 AS build
 
-# Crear directorio de trabajo
 WORKDIR /app
 
-# Copiar package.json y package-lock.json
-COPY package*.json ./
+COPY package.json bun.lockb* ./
+RUN bun install
 
-# Instalar dependencias
-RUN npm install
-
-# Copiar el resto del proyecto
 COPY . .
 
-# Construir la aplicación Angular en modo producción
-RUN npm run build -- --configuration production
+# build angular
+RUN bunx ng build my-landing --configuration production
 
 
-# ---------- Etapa 2: Servidor Nginx ----------
+# ---------- NGINX ----------
 FROM nginx:alpine
 
-# Eliminar configuración por defecto
-RUN rm -rf /usr/share/nginx/html/*
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copiar build Angular al servidor nginx
-COPY --from=build /app/dist /usr/share/nginx/html
+# ✅ ESTA ES LA RUTA CORRECTA EN TU CASO
+COPY --from=build /app/dist/my-landing /usr/share/nginx/html
 
-# Exponer puerto
+RUN chmod -R 755 /usr/share/nginx/html
+
 EXPOSE 80
 
-# Ejecutar nginx
 CMD ["nginx", "-g", "daemon off;"]
