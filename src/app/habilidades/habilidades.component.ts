@@ -2,6 +2,7 @@ import { Component, AfterViewInit, ElementRef, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { PaginatedResponse, Property } from 'src/app/core/models/domus.model';
 import { DomusService } from '../core/service/domus.service';
+import { enviroment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-habilidades',
@@ -9,6 +10,14 @@ import { DomusService } from '../core/service/domus.service';
   styleUrls: ['./habilidades.component.css']
 })
 export class HabilidadesComponent implements AfterViewInit, OnDestroy {
+
+  enviarWhatsApp(property: Property) {
+    const numero = enviroment.whatsappNumber;
+    const mensaje = `Hola, estoy interesado en la propiedad ${property.address} en ${property.city}.`;
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+
+    window.open(url, '_blank');
+  }
 
   private resizeHandler: () => void;
   private observer: IntersectionObserver | null = null;
@@ -21,7 +30,7 @@ export class HabilidadesComponent implements AfterViewInit, OnDestroy {
     this.domusService.getProperties().subscribe((response: PaginatedResponse<Property>) => {
       this.properties = response.data.map(p => ({ ...p, currentImageIndex: 0, images: [p.image1, p.image2, p.image3] }));
     });
-  }  
+  }
 
   // filtros del formulario
   public filters: any = {

@@ -14,7 +14,7 @@ export class DomusService {
   private properties$?: Observable<PaginatedResponse<Property>>;
 
   constructor(private http: HttpClient) {
-    this.baseUrl = enviroment.domusApiUrl;
+    this.baseUrl = enviroment.domusApiUrl + "/";
   }
 
   getProperties(): Observable<PaginatedResponse<Property>> {
