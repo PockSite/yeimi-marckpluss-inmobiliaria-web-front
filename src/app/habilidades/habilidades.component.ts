@@ -12,6 +12,30 @@ import { finalize } from 'rxjs/operators';
 })
 export class HabilidadesComponent implements AfterViewInit, OnDestroy {
 
+  page = 1;
+  pageSize = 3;
+
+  get paginatedProperties(): Property[] {
+    const start = (this.page - 1) * this.pageSize;
+    return this.filteredProperties.slice(start, start + this.pageSize);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.filteredProperties.length / this.pageSize);
+  }
+
+  nextPage() {
+    if (this.page < this.totalPages) {
+      this.page++;
+    }
+  }
+
+  prevPage() {
+    if (this.page > 1) {
+      this.page--;
+    }
+  }
+
   enviarWhatsApp(property: Property) {
     const numero = enviroment.whatsappNumber;
     const mensaje = `Hola, estoy interesado en la propiedad ${property.address} en ${property.city}.`;

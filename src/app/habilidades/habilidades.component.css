@@ -2,6 +2,21 @@
    ESTRUCTURA GENERAL Y FONDO
    ============================================ */
 
+.pagination{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+  margin-top:30px;
+}
+
+.pagination button{
+  padding:8px 14px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
 .grid-wrapper {
   background-color: var(--color-second);
   min-height: 1000px;
@@ -11,9 +26,6 @@
 }
 
 .grid-background {
-  background-image: 
-    linear-gradient(to right, var(--color-main) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-main2) 1px, transparent 1px);
   background-size: 20px 30px;
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, var(--color-main) 80%, transparent 100%);
   mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, var(--color-main) 80%, transparent 100%);
