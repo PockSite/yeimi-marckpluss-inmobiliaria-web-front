@@ -7,13 +7,13 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class HeaderTopComponent implements OnInit {
 
-  navItems = [
-    { name: 'Inicio', url: '#', icon: 'fas fa-home' },
-    { name: 'Recomendados', url: '#sobre-mi', icon: 'fas fa-user' },
-    { name: 'Catalogo', url: '#cursos', icon: 'fas fa-graduation-cap' },
-    { name: 'Nuetsro Servcio', url: '#proyectos', icon: 'fas fa-briefcase' },
-    { name: 'Contactos', url: '#contacto', icon: 'fas fa-envelope' }
-  ];
+ navItems = [
+    { name: 'Inicio', url: '#', icon: 'fas fa-home' }, // Se mantiene, es el estándar.
+    { name: 'Catalogo', url: '#catalogo', icon: 'fas fa-book-open' }, // "book-open" o "th-list" representan mejor un catálogo que un birrete.
+    { name: 'Datos', url: '#datos', icon: 'fas fa-chart-bar' }, // "chart-bar" o "database" para representar información o métricas.
+    { name: 'Sobre Nosotros', url: '#sobre-nosotros', icon: 'fas fa-users' }, // "users" representa un equipo o grupo de personas.
+    { name: 'Contactos', url: '#contacto', icon: 'fas fa-paper-plane' } // "paper-plane" o "phone" son variaciones modernas al sobre clásico.
+];
 
   activeTab = 'Inicio';
   isMobile = false;
