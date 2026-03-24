@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
-import { PaginatedResponse, Property } from '../models/domus.model';
+import { IndividualPropertyResponse, PaginatedResponse, Property } from '../models/domus.model';
 import { enviroment } from '../../../environments/environment';
 
 @Injectable({
@@ -28,5 +28,10 @@ export class DomusService {
     }
 
     return this.properties$;
+  }
+
+  getPropertyById(id: string): Observable<IndividualPropertyResponse> {
+    console.log(`Fetching property with ID: ${id} from ${this.baseUrl}${id}`);
+    return this.http.get<IndividualPropertyResponse>(`${this.baseUrl}${id}`);
   }
 }

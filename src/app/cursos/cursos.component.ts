@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
 import { DomusService } from '../core/service/domus.service';
+import { WhatsappService } from '../core/service/whatsapp.service';
+
 
 @Component({
   selector: 'app-cursos',
@@ -41,6 +43,7 @@ export class CursosComponent implements OnInit, OnDestroy, AfterViewInit {
       next: (response) => {
         const properties = response.data.map(p => ({ ...p, currentImageIndex: 0, images: [p.image1, p.image2, p.image3] }));
         this.estate = properties.map(p => ({
+          codpro: p.codpro,
           image: p.image1 || p.image2 || p.image3 || '',
           name: p.address,
           price: +p.price,
@@ -51,7 +54,7 @@ export class CursosComponent implements OnInit, OnDestroy, AfterViewInit {
           rooms: p.bedrooms,
           baths: p.bathrooms
         }));
-        this.setupSlides();      
+        this.setupSlides();
       },
       error: (error) => {
         console.error('Error al obtener propiedades:', error);
@@ -59,7 +62,7 @@ export class CursosComponent implements OnInit, OnDestroy, AfterViewInit {
         this.slides = [];
       }
     });
-   }
+  }
 
   ngOnInit(): void {
     this.updateVisibleCards(); // ajustar al iniciar (this will setup slides)

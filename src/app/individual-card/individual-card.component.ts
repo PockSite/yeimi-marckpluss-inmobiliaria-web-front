@@ -35,16 +35,12 @@ export class IndividualCardComponent implements OnInit {
   private loadProperty(id: string): void {
     this.isLoading = true;
     // Simular carga de una sola propiedad usando el servicio
-    this.domusService.getProperties().subscribe({
+    this.domusService.getPropertyById(id).subscribe({
       next: (response) => {
-        const foundProperty = response.data.find(p => p.idpro.toString() === id);
+        const foundProperty = response.data;
         if (foundProperty) {
           this.property = foundProperty;
-          this.images = [
-            foundProperty.image1,
-            foundProperty.image2,
-            foundProperty.image3
-          ].filter(img => img && img.trim() !== '');
+          this.images = foundProperty.images?.map(image => image.imageurl) || [];
           this.currentImageIndex = 0;
         } else {
           this.router.navigate(['/']);

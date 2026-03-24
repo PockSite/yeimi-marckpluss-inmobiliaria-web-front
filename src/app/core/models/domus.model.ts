@@ -92,5 +92,16 @@ export interface Property {
   image3_wm: string;
 
   currentImageIndex?: number;
-  images?: string[];
+  images?: [
+    {
+      imageurl: string,
+      image_wm_url: string,
+      thumburl: string,
+      order: number;
+    }
+  ];
+}
+
+export interface IndividualPropertyResponse {
+  data: Property;
 }

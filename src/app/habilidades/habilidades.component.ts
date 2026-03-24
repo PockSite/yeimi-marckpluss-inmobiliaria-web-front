@@ -4,6 +4,9 @@ import { PaginatedResponse, Property } from 'src/app/core/models/domus.model';
 import { DomusService } from '../core/service/domus.service';
 import { enviroment } from 'src/environments/environment';
 import { finalize } from 'rxjs/operators';
+import { WhatsappService } from '../core/service/whatsapp.service';
+
+const whatsappService = new WhatsappService()
 
 @Component({
   selector: 'app-habilidades',
@@ -37,18 +40,14 @@ export class HabilidadesComponent implements AfterViewInit, OnDestroy {
   }
 
   enviarWhatsApp(property: Property) {
-    const numero = enviroment.whatsappNumber;
-    const mensaje = `Hola, estoy interesado en la propiedad ${property.address} en ${property.city}.`;
-    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-
-    window.open(url, '_blank');
+    whatsappService.sendPropertyDetails(property);
   }
 
   private resizeHandler: () => void;
   private observer: IntersectionObserver | null = null;
 
   // --- Propiedades de ejemplo para mostrar en tarjetas ---
-  public properties: Property[] = [];
+  public properties: any = [];
   public isLoadingProperties = true;
 
   constructor(private el: ElementRef, private domusService: DomusService, private router: Router) {
@@ -86,8 +85,8 @@ export class HabilidadesComponent implements AfterViewInit, OnDestroy {
     { value: 'CASA', label: 'Casa' }
   ];
 
-  get filteredProperties(): any[] {
-    return this.properties.filter(p => {
+  get filteredProperties(): Property[] {
+    return this.properties.filter((p: Property) => {
       // filtrar por tipo de negocio (venta/alquiler)
       if (this.filters.biz && p.biz !== this.filters.biz) return false;
       if (this.filters.city && p.city.toLowerCase().indexOf(this.filters.city.toLowerCase()) === -1) return false;
@@ -148,7 +147,7 @@ export class HabilidadesComponent implements AfterViewInit, OnDestroy {
   // Navegar a la vista de detalles de la propiedad
   public viewPropertyDetail(property: Property, event: Event): void {
     event.preventDefault();
-    this.router.navigate(['/propiedad', property.idpro]);
+    this.router.navigate(['/propiedad', property.codpro]);
   }
 
   ngAfterViewInit(): void {

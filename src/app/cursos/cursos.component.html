@@ -18,8 +18,8 @@
       [style.transform]="'translateX(' + currentTranslate + 'px)'">
 
       <div class="card" *ngFor="let course of slides; let i = index">
-        <div class="top-section">
-          <div class="course-image">
+          <div class="top-section">
+          <a [routerLink]="['/propiedad',course.codpro]" class="course-image">
             <div class="image-loading-overlay" *ngIf="isImageLoading(course.image)">
               <span class="image-loader" aria-label="Cargando imagen"></span>
             </div>
@@ -31,7 +31,8 @@
               (load)="onImageLoad(course.image)"
               (error)="onImageError(course.image)">
             <div class="price-badge">{{ course.priceFormatted || course.price || course.precio }}</div>
-          </div>
+          </a>
+
         </div>
         <div class="bottom-section">
           <div class="location">
