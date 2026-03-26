@@ -104,6 +104,11 @@
   color: #ffffff;
 }
 
+.social-link.social-email-light {
+  background: #ffffff;
+  color: #000000;
+}
+
 .social-link:hover {
   background: var(--color-main3);
   transform: translateY(-5px) scale(1.1);
