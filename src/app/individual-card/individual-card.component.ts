@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Property } from '../core/models/domus.model';
 import { DomusService } from '../core/service/domus.service';
+import { WhatsappService } from '../core/service/whatsapp.service';
 
 @Component({
   selector: 'app-individual-card',
@@ -20,7 +21,8 @@ export class IndividualCardComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private location: Location,
-    private domusService: DomusService
+    private domusService: DomusService,
+    private whatsappService: WhatsappService,
   ) {}
 
   ngOnInit(): void {
@@ -88,9 +90,9 @@ export class IndividualCardComponent implements OnInit {
   }
 
   public contactAgent(): void {
-    // Implementar lógica para contactar al agente
-    // Por ejemplo, abrir WhatsApp o mostrar formulario de contacto
-    console.log('Contactar agente para propiedad:', this.property?.idpro);
+    if (this.property != null){    
+      this.whatsappService.sendPropertyDetails(this.property);
+    }
   }
 
   public shareProperty(): void {
