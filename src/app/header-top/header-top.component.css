@@ -7,7 +7,7 @@
   z-index: 50;
   transition: transform 0.35s ease, opacity 0.25s ease;
   opacity: 1;
-  background-color: var(--color-main); /* usa color definido en :root */
+  background-color: var(--color-text2); /* usa color definido en :root */
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 
@@ -20,7 +20,7 @@
 /* Logo Styles */
 .navbar-inner {
   max-width: 1200px;
-  height: 60px;
+  height: 65px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -31,7 +31,7 @@
 .logo-wrap a { display: inline-flex; align-items:center; }
 
 .lion-logo {
-  height: 60px;
+  height: 65px;
   width: auto;
   display: block;
 }
@@ -50,7 +50,7 @@
   font-weight: 600;
   padding: 0.45rem 0.9rem;
   transition: color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--color-main2);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -59,12 +59,12 @@
 
 /* Hover moderno y sutil */
 .nav-item:hover {
-  color: var(--color-second);
+  color: var(--color-main3);
   transform: translateY(-3px);
   box-shadow: 0 8px 18px rgba(0,0,0,0.18);
 }
 
-.nav-item.active { color: var(--color-second); }
+.nav-item.active { color: var(--color-main3); }
 
 .nav-text { display: none; font-size: 0.9rem; letter-spacing: 0.3px; }
 .nav-icon { display: inline-block; }
@@ -79,7 +79,7 @@
   position: absolute;
   inset: 0;
   width: 100%;
-  background-color: rgba(var(--color-second-rgb), 0.05);
+  background-color: rgba(var(--color-main3), 0.05);
   border-radius: 9999px;
   z-index: -10;
   overflow: hidden;
@@ -92,7 +92,7 @@
   transform: translateX(-50%);
   width: 2rem;
   height: 0.25rem;
-  background-color: var(--color-second);
+  background-color: var(--color-main);
   border-top-left-radius: 9999px;
   border-top-right-radius: 9999px;
 }
@@ -101,7 +101,7 @@
   position: absolute;
   width: 3rem;
   height: 1.5rem;
-  background-color: rgba(var(--color-second-rgb), 0.2);
+  background-color: rgba(var(--color-main), 0.2);
   border-radius: 9999px;
   filter: blur(12px);
   top: -0.5rem;
@@ -112,7 +112,7 @@
   position: absolute;
   width: 2rem;
   height: 1.5rem;
-  background-color: rgba(var(--color-second-rgb), 0.2);
+  background-color: rgba(var(--color-main), 0.2);
   border-radius: 9999px;
   filter: blur(12px);
   top: -0.25rem;
@@ -123,7 +123,7 @@
   position: absolute;
   width: 1rem;
   height: 1rem;
-  background-color: rgba(var(--color-second-rgb), 0.2);
+  background-color: rgba(var(--color-main), 0.2);
   border-radius: 9999px;
   filter: blur(4px);
   top: 0;

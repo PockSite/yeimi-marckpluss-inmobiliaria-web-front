@@ -50,10 +50,10 @@
 .chat-window {
     width: 350px;
     height: 500px;
-    background: var(--color-main);
+    background: var(--color-text2);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: var(--color-main2);
+    border: var(--color-text);
     border-radius: 20px;
     box-shadow: var(--color-main2);
     display: flex;
@@ -150,13 +150,14 @@
     border-radius: 15px;
     font-size: 14px;
     line-height: 1.4;
-    color: var(--color-text2);
+    color: var(--color-text);
 }
 
 .message.bot {
     align-self: flex-start;
     background: var(--color-main2);
     border-bottom-left-radius: 2px;
+    color: var(--color-text2);
 }
 
 .message.user {
@@ -171,46 +172,46 @@
 }
 
 .chat-messages::-webkit-scrollbar-thumb {
-    background: var(--color-main2);
+    background: var(--color-title);
     border-radius: 3px;
 }
 
 /* Input Area */
 .chat-input {
     padding: 15px;
-    background: var(--color-main);
+    background: var(--color-title);
     display: flex;
     align-items: center;
     gap: 10px;
-    border-top: 1px solid var(--color-main2);
+    border-top: 1px solid var(--color-text);
 }
 
 .chat-input input {
     flex: 1;
-    background: var(--color-main);
-    border: 1px solid var(--color-main2);
+    background: var(--color-title);
+    border: 1px solid var(--color-text);
     padding: 10px 15px;
     border-radius: 25px;
-    color: var(--color-text2);
+    color: var(--color-text);
     outline: none;
     transition: border-color 0.3s;
 }
 
 .chat-input input::placeholder {
-    color: var(--color-text2);
+    color: var(--color-text);
 }
 
 .chat-input input:focus {
-    border-color: var(--color-border);
+    border-color: var(--color-text2);
 }
 
 .send-btn {
-    background: var(--color-main2);
+    background: var(--color-text2);
     border: none;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    color: var(--color-text2);
+    color: var(--color-text);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -220,7 +221,8 @@
 }
 
 .send-btn:hover {
-    background: var(--color-border);
+    background: var(--color-main2);
+    color: var(--color-text2);
 }
 
 /* Mobile Responsiveness (Phones) */

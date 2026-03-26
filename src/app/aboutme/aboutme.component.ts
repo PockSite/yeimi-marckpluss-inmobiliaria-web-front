@@ -17,59 +17,34 @@ export class AboutmeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   logros = [
     {
-      icon: 'fas fa-handshake',
-      title: 'Acompañamiento Personalizado',
-      description: 'Asesoría cercana y profesional durante todo el proceso de venta o arriendo.'
+      icon: 'fas fa-hand-holding-heart',
+      title: 'Buen Servicio',
+      description: 'Excelencia y profesionalismo.'
+    },
+    {
+      icon: 'fas fa-users',
+      title: 'Apoyo Integral',
+      description: 'Acompañamiento completo de principio a fin.'
     },
     {
       icon: 'fas fa-shield-alt',
       title: 'Transparencia',
-      description: 'Procesos claros, información detallada y comunicación constante en cada etapa.'
+      description: 'Honestidad y confianza en cada paso'
     },
     {
-      icon: 'fas fa-home',
-      title: 'Experiencia en el Mercado',
-      description: 'Conocimiento profundo del mercado inmobiliario, especialmente en Bogotá.'
+      icon: 'fas fa-headset',
+      title: 'Seguimiento Permanente',
+      description: 'Atención constante a tus necesidades.'
     },
     {
-      icon: 'fas fa-chart-line',
-      title: 'Estrategia Comercial',
-      description: 'Planes de comercialización efectivos para maximizar la visibilidad y el valor de cada propiedad.'
+      icon: 'fas fa-lock',
+      title: 'Garantía de Confianza',
+      description: 'Protección y seguridad en cada transacción.'
     },
     {
-      icon: 'fas fa-camera',
-      title: 'Marketing Inmobiliario',
-      description: 'Promoción digital y posicionamiento estratégico de inmuebles.'
-    },
-    {
-      icon: 'fas fa-users',
-      title: 'Red de Contactos',
-      description: 'Amplia base de compradores, arrendatarios e inversionistas potenciales.'
-    },
-    {
-      icon: 'fas fa-clock',
-      title: 'Agilidad en Procesos',
-      description: 'Gestión eficiente para reducir tiempos de cierre sin comprometer la calidad.'
-    },
-    {
-      icon: 'fas fa-comments',
-      title: 'Comunicación Efectiva',
-      description: 'Atención oportuna y seguimiento constante a propietarios y clientes.'
-    },
-    {
-      icon: 'fas fa-building',
-      title: 'Cobertura Nacional',
-      description: 'Intermediación de ventas y arriendos a nivel nacional con enfoque en Bogotá.'
-    },
-    {
-      icon: 'fas fa-search-dollar',
-      title: 'Valoración Profesional',
-      description: 'Análisis de mercado para establecer precios competitivos y atractivos.'
-    },
-    {
-      icon: 'fas fa-heart',
-      title: 'Confianza y Cercanía',
-      description: 'Construimos relaciones basadas en el respeto, la ética y el compromiso.'
+      icon: 'fas fa-check-circle',
+      title: 'Soluciones Efectivas',
+      description: 'Resultados probados y cumplidos.'
     }
   ];
 

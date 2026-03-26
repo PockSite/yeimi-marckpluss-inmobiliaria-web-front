@@ -14,20 +14,20 @@ export class TechComponent implements AfterViewInit {
     {
       title: 'Buen Servicio',
       icon: 'fas fa-hand-holding-heart',
-      color: 'var(--color-border)',
+      color: 'var(--color-title)',
       text: 'Excelencia y profesionalismo.'
     },
     {
-      title: 'Apoyo Familiar',
+      title: 'Apoyo Integral',
       icon: 'fas fa-users',
-      color: 'var(--color-border)',
-      text: 'Cercanía y trato personalizado.'
+      color: 'var(--color-title)',
+      text: 'Acompañamiento completo de principio a fin.'
     },
     {
-      title: 'Confianza',
+      title: 'Transparencia',
       icon: 'fas fa-shield-alt',
-      color: 'var(--color-border)',
-      text: 'Procesos transparentes de principio a fin.'
+      color: 'var(--color-title)',
+      text: 'Honestidad y confianza en cada paso'
     }
   ];
 

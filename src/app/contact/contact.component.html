@@ -17,33 +17,96 @@
       </div>
 
       <div class="social-links">
-        <a [href]="social.url" target="_blank" class="social-link" *ngFor="let social of socialLinks">
+        <a [href]="social.url" target="_blank" class="social-link" [ngClass]="social.network" *ngFor="let social of socialLinks">
           <i [class]="social.icon"></i>
         </a>
       </div>
     </div>
 
     <div class="contact-form">
-      <form action="https://formspree.io/f/xqezogqo" method="POST">
+      <form #contactNgForm="ngForm" (ngSubmit)="onSubmit(contactNgForm)" novalidate>
         <label class="form-group">
-          <input type="text" name="name" placeholder="Tu nombre" required>
+          <input
+            type="text"
+            name="name"
+            placeholder="Tu nombre"
+            required
+            minlength="3"
+            maxlength="80"
+            [(ngModel)]="contactForm.name"
+            #name="ngModel"
+            [class.invalid-field]="name.invalid && (name.touched || contactNgForm.submitted)">
+          <small class="field-error" *ngIf="name.invalid && (name.touched || contactNgForm.submitted)">
+            Ingresa un nombre valido (minimo 3 caracteres).
+          </small>
         </label>
         <label class="form-group">
-          <input type="email" name="email" placeholder="Tu email" required>
+          <input
+            type="email"
+            name="email"
+            placeholder="Tu email"
+            required
+            email
+            [(ngModel)]="contactForm.email"
+            #email="ngModel"
+            [class.invalid-field]="email.invalid && (email.touched || contactNgForm.submitted)">
+          <small class="field-error" *ngIf="email.invalid && (email.touched || contactNgForm.submitted)">
+            Escribe un correo electronico valido.
+          </small>
         </label>
         <label class="form-group">
-          <input type="tel" name="phone" placeholder="Tu teléfono" required>
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Tu telefono"
+            required
+            pattern="^\+?[0-9\s()-]{7,20}$"
+            [(ngModel)]="contactForm.phone"
+            #phone="ngModel"
+            [class.invalid-field]="phone.invalid && (phone.touched || contactNgForm.submitted)">
+          <small class="field-error" *ngIf="phone.invalid && (phone.touched || contactNgForm.submitted)">
+            Ingresa un telefono valido.
+          </small>
         </label>
         <label class="form-group">
-          <input type="text" name="subject" placeholder="Asunto" required>
+          <input
+            type="text"
+            name="subject"
+            placeholder="Asunto"
+            required
+            minlength="4"
+            maxlength="100"
+            [(ngModel)]="contactForm.subject"
+            #subject="ngModel"
+            [class.invalid-field]="subject.invalid && (subject.touched || contactNgForm.submitted)">
+          <small class="field-error" *ngIf="subject.invalid && (subject.touched || contactNgForm.submitted)">
+            El asunto debe tener al menos 4 caracteres.
+          </small>
         </label>
         <label class="form-group">
-          <textarea name="message" placeholder="Tu mensaje" rows="5" required></textarea>
+          <textarea
+            name="message"
+            placeholder="Tu mensaje"
+            rows="5"
+            required
+            minlength="10"
+            maxlength="1200"
+            [(ngModel)]="contactForm.message"
+            #message="ngModel"
+            [class.invalid-field]="message.invalid && (message.touched || contactNgForm.submitted)"></textarea>
+          <small class="field-error" *ngIf="message.invalid && (message.touched || contactNgForm.submitted)">
+            El mensaje debe tener al menos 10 caracteres.
+          </small>
         </label>
-        <button type="submit" class="btn-submit">
+        <button type="submit" class="btn-submit" [disabled]="contactNgForm.invalid || isSubmitting">
           <i class="fas fa-paper-plane"></i>
-          Enviar Mensaje
+          {{ isSubmitting ? 'Enviando...' : 'Enviar Mensaje' }}
         </button>
+
+        <div class="submit-toast" *ngIf="submitMessage" [ngClass]="submitType">
+          <i class="fas" [ngClass]="submitType === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation'"></i>
+          <span>{{ submitMessage }}</span>
+        </div>
       </form>
     </div>
   </div>

@@ -1,13 +1,13 @@
 /* 8. CONTACTO */
 .contact-section {
-  background: var(--color-main);
+  background: var(--color-text2);
   padding: 80px 20px;
 }
 
 .section-title2 {
   font-size: 2.5rem;
   font-weight: 900;
-  color: var(--color-title);
+  color: var(--color-main2);
   margin-bottom: 50px;
   text-transform: uppercase;
   text-align: center;
@@ -25,13 +25,13 @@
 }
 
 .contact-info h3 {
-  color: var(--color-second);
+  color: var(--color-main3);
   font-size: 2rem;
   margin-bottom: 20px;
 }
 
 .contact-info p {
-  color: var(--color-text2);
+  color: var(--color-text);
   font-size: 1.1rem;
   line-height: 1.7;
   margin-bottom: 40px;
@@ -41,24 +41,24 @@
 .contact-method {
   display: flex;
   align-items: center;
-  color: var(--color-text2);
+  color: var(--color-text);
   margin-left: 30px
 }
 
 .contact-method i {
   font-size: 1.5rem;
-  color: var(--color-second);
+  color: var(--color-main);
   margin-right: 20px;
   min-width: 30px;
 }
 
 .contact-method h4 {
-  color: var(--color-second);
+  color: var(--color-main);
   margin-bottom: 5px;
 }
 
 .contact-method p {
-  color: var(--color-text2);
+  color: var(--color-text);
   margin: 0;
 }
 
@@ -66,6 +66,7 @@
   display: flex;
   gap: 30px;
   margin-top: 50px;
+  margin-left: 30px;
 }
 
 .social-link {
@@ -74,7 +75,7 @@
   justify-content: center;
   width: 50px;
   height: 50px;
-  background: var(--color-main);
+  background: var(--color-title);
   border-radius: 50%;
   color: var(--color-text2);
   text-decoration: none;
@@ -83,15 +84,40 @@
   gap: 15px;
 }
 
+.social-link.social-whatsapp {
+  background: #25d366;
+  color: #ffffff;
+}
+
+.social-link.social-instagram {
+  background: linear-gradient(135deg, #f58529 0%, #dd2a7b 50%, #8134af 100%);
+  color: #ffffff;
+}
+
+.social-link.social-tiktok {
+  background: #000000;
+  color: #ffffff;
+}
+
+.social-link.social-email {
+  background: #0a66c2;
+  color: #ffffff;
+}
+
+.social-link.social-email-light {
+  background: #ffffff;
+  color: #000000;
+}
+
 .social-link:hover {
-  background: var(--color-second);
+  background: var(--color-main3);
   transform: translateY(-5px) scale(1.1);
   box-shadow: 0px 10px 25px var(--color-border);
   color: var(--color-main);
 }
 
 .contact-form {
-  background: var(--color-tech);
+  background: var(--color-title);
   padding: 40px;
   border-radius: 20px;
   backdrop-filter: blur(10px);
@@ -106,16 +132,30 @@
   width: 90%;
 }
 
+.field-error {
+  display: block;
+  margin-top: 8px;
+  color: #d62839;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
 .form-group input,
 .form-group textarea {
   width: 100%;
   padding: 15px 20px;
-  background: var(--color-main2);
+  background: var(--color-text2);
   border: 2px solid transparent;
   border-radius: 10px;
-  color: var(--color-text2);
+  color: var(--color-text);
   font-size: 1rem;
   transition: all 0.3s ease;
+}
+
+.form-group input.invalid-field,
+.form-group textarea.invalid-field {
+  border-color: #d62839;
+  box-shadow: 0 0 0 3px rgba(214, 40, 57, 0.12);
 }
 
 .form-group input:focus,
@@ -128,13 +168,13 @@
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: var(--color-text2);
+  color: var(--color-text);
 }
 
 .btn-submit {
   width: 100%;
   padding: 15px;
-  background: linear-gradient(135deg, var(--color-title) 0%, var(--color-border) 100%);
+  background: var(--color-title);
   border: none;
   border-radius: 10px;
   color: var(--color-main);
@@ -144,6 +184,13 @@
   transition: all 0.3s ease;
 }
 
+.btn-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.75;
+  transform: none;
+  box-shadow: none;
+}
+
 .btn-submit:hover {
   transform: translateY(-2px);
   box-shadow: 0px 10px 25px var(--color-title);
@@ -151,6 +198,43 @@
 
 .btn-submit i {
   margin-right: 10px;
+}
+
+.submit-toast {
+  margin-top: 18px;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  animation: fadeInToast 0.35s ease;
+}
+
+.submit-toast.success {
+  background: linear-gradient(135deg, #e9fff4 0%, #d7fbe8 100%);
+  color: #0b6b3b;
+  border-color: rgba(11, 107, 59, 0.25);
+}
+
+.submit-toast.error {
+  background: linear-gradient(135deg, #fff1f2 0%, #ffe5e8 100%);
+  color: #9f1d2b;
+  border-color: rgba(159, 29, 43, 0.25);
+}
+
+@keyframes fadeInToast {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* FOOTER */

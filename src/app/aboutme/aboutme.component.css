@@ -6,8 +6,8 @@
   padding: 80px 40px;
   align-items: center;
   /* Centrar verticalmente también si es necesario */
-  background: var(--color-main);
-  color: var(--color-text2);
+  background: var(--color-second);
+  color: var(--color-main2);
   max-width: 1400px;
   /* Limitar ancho para que se pueda centrar */
   margin: 0 auto;
@@ -26,7 +26,7 @@
 .section-title {
   font-size: 2.5rem;
   font-weight: 900px;
-  color: var(--color-title);
+  color: var(--color-main3);
   margin-bottom: 30px;
   text-transform: uppercase;
 }
@@ -36,6 +36,7 @@
   margin-bottom: 40px;
   line-height: 1.8;
   text-align: justify;
+  color: var(--color-text)
 }
 
 /* ---- Hobbies ---- */
@@ -47,7 +48,7 @@
   font-size: 1.6rem;
   font-weight: 700;
   margin-bottom: 15px;
-  color: var(--color-title);
+  color: var(--color-main);
 }
 
 .hobbies-bubbles {

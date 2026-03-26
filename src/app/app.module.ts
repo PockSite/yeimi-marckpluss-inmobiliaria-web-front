@@ -21,6 +21,7 @@ import { TechComponent } from './tech/tech.component';
 import { ContactComponent } from './contact/contact.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { IndividualCardComponent } from './individual-card/individual-card.component';
+import { StatesComponent } from './states/states.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { IndividualCardComponent } from './individual-card/individual-card.compo
     ContactComponent,
     ChatbotComponent,
     IndividualCardComponent,
+    StatesComponent,
   ],
   imports: [
     BrowserModule,

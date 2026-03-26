@@ -18,8 +18,8 @@
       [style.transform]="'translateX(' + currentTranslate + 'px)'">
 
       <div class="card" *ngFor="let course of slides; let i = index">
-        <div class="top-section">
-          <div class="course-image">
+          <div class="top-section">
+          <a [routerLink]="['/propiedad',course.codpro]" class="course-image">
             <div class="image-loading-overlay" *ngIf="isImageLoading(course.image)">
               <span class="image-loader" aria-label="Cargando imagen"></span>
             </div>
@@ -31,20 +31,18 @@
               (load)="onImageLoad(course.image)"
               (error)="onImageError(course.image)">
             <div class="price-badge">{{ course.priceFormatted || course.price || course.precio }}</div>
-          </div>
+          </a>
+
         </div>
         <div class="bottom-section">
-          <div class="header-row">
-            <div class="title">{{ course.name || course.title }}</div>
-          </div>
-          <div class="desc">{{ course.description || course.desc || course.summary }}</div>
-          <div class="meta-row">
-            <div class="location">
+          <div class="location">
               <div class="loc-icon">
                 <div class="loader-shape-3" aria-hidden="true"></div>
               </div>
               <div class="loc-text">{{ course.location || course.ubicacion || course.address }}</div>
             </div>
+          <div class="desc">{{ course.description || course.desc || course.summary }}</div>
+          <div class="meta-row">
           </div>
           <div class="stats-row">
             <div *ngIf="course.area" class="stat"><span class="stat-icon"><i class="fas fa-ruler-combined" aria-hidden="true"></i></span><span class="stat-value">{{course.area}}</span></div>
