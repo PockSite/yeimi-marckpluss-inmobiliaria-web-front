@@ -125,7 +125,7 @@
 /* tarjetas: no permitir que se encojan */
 /* tarjeta individual */
 .achievement-card {
-  background: var(--color-main2);
+  background: var(--color-title);
   padding: 20px;
   border-radius: 12px;
   display: flex;
@@ -150,7 +150,7 @@
 }
 
 .achievement-card:hover {
-  border: 1px solid var(--color-title);
+  border: 1px solid var(--color-main2);
   box-shadow: 0 0 25px rgba(248, 225, 216, 0.4);
   /* Color secundario translúcido */
   transform: scale(1.02);
@@ -158,19 +158,19 @@
 
 .achievement-card i {
   font-size: 1.8rem;
-  color: var(--color-title);
+  color: var(--color-main3);
 }
 
 .achievement-text h3 {
   margin: 0;
   font-size: 1.2rem;
-  color: var(--color-title);
+  color: var(--color-main2);
 }
 
 .achievement-text p {
   margin: 5px 0 0;
   font-size: 0.95rem;
-  color: var(--color-text2);
+  color: var(--color-text);
 }
 
 /* --- Responsive --- */

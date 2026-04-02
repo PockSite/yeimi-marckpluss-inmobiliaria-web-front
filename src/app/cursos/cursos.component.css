@@ -4,11 +4,11 @@
 
 .courses-section {
   background: var(--color-text2);
-  padding: 10px;
+  height: 450px;
   text-align: center;
   position: relative;
   overflow: hidden;
-  margin-top: 0px;
+  margin-top: -50px;
 }
 
 .carousel {
@@ -683,49 +683,370 @@ button:active .button-text {
   }
 }
 
-/* ============================= */
-/* RESPONSIVE */
-/* ============================= */
+/* Proporciones globales solicitadas: carrusel ~ mitad de pantalla */
+.courses-section {
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 3vh, 32px) 0;
+}
 
-/* Tablets */
+.carousel {
+  width: 100%;
+  max-width: 1500px;
+  margin-left: clamp(18px, 4.2vw, 78px);
+  margin-right: clamp(18px, 4.2vw, 78px);
+}
+
+.card {
+  flex: 0 0 min(58vw, 760px);
+  height: clamp(260px, 38svh, 360px);
+}
+
+.card .top-section {
+  width: 48%;
+  min-width: 48%;
+}
+
+.card .bottom-section {
+  width: 52%;
+  padding: clamp(14px, 2.2vh, 22px) clamp(14px, 1.9vw, 24px);
+}
+
+.card .bottom-section .desc {
+  font-size: clamp(0.95rem, 1.05vw, 1.08rem);
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+.card .top-section .price-badge {
+  font-size: clamp(1rem, 1.35vw, 1.45rem);
+  padding: clamp(7px, 1.1vh, 10px) clamp(10px, 1.2vw, 14px);
+}
+
+@media (max-width: 1024px) {
+  .courses-section {
+    padding: clamp(18px, 2.6vh, 28px) 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .courses-section {
+    padding: clamp(14px, 2.2vh, 22px) 0;
+  }
+}
+
+@media (max-width: 430px) {
+  .courses-section {
+    padding: clamp(10px, 2vh, 18px) 0;
+  }
+}
+
+/* Vista compacta: 4 cards visibles en desktop, solo imagen + precio + ubicación */
+.card {
+  flex: 0 0 clamp(240px, 23vw, 280px);
+  width: clamp(240px, 23vw, 280px);
+  height: auto;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  min-height: 100%;
+}
+
+.card .top-section {
+  width: 100%;
+  min-width: 100%;
+  height: clamp(180px, 23vw, 220px);
+}
+
+.card .bottom-section {
+  width: 100%;
+  height: auto;
+  padding: 12px 10px;
+  justify-content: flex-start;
+  gap: 4px;
+}
+
+.card .bottom-section .title,
+.card .bottom-section .desc,
+.card .bottom-section .meta-row,
+.card .bottom-section .stats-row {
+  display: none;
+}
+
+.card .bottom-section .location {
+  align-items: flex-start;
+  gap: 4px;
+  margin-top: 0;
+  font-size: 0.75rem;
+}
+
+.card .bottom-section .location .loc-icon {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+}
+
+.card .bottom-section .location .loc-text {
+  font-size: 0.75rem;
+  line-height: 1.05;
+  font-weight: 500;
+}
+
+.card .top-section .price-badge {
+  font-size: 0.75rem;
+  padding: 4px 7px;
+  right: 6px;
+  top: 6px;
+  border-radius: 6px;
+}
+
+.card .top-section .course-image img {
+  object-fit: cover;
+}
+
+@media (min-width: 1440px) {
+  .carousel {
+    margin-left: 54px;
+    margin-right: 54px;
+  }
+
+  .card {
+    flex-basis: calc((100% - 72px) / 4);
+    width: calc((100% - 72px) / 4);
+    max-width: 310px;
+    height: auto;
+  }
+
+  .card .top-section {
+    height: 220px;
+  }
+}
+
+@media (max-width: 1380px) {
+  .card {
+    flex: 0 0 clamp(220px, 25vw, 290px);
+    width: clamp(220px, 25vw, 290px);
+  }
+
+  .card .top-section {
+    height: clamp(160px, 22vw, 210px);
+  }
+}
+
 @media (max-width: 1024px) {
   .card {
-    flex: 0 0 calc(100% / 2); /* 2 tarjetas visibles */
+    flex: 0 0 clamp(200px, 27vw, 270px);
+    width: clamp(200px, 27vw, 270px);
+  }
+
+  .card .top-section {
+    height: clamp(150px, 24vw, 200px);
   }
 }
 
-/* Celulares grandes */
 @media (max-width: 768px) {
   .card {
-    flex: 0 0 calc(100% / 1.2); /* 1 tarjeta y media (asoma la siguiente) */
-    margin: 0 10px;
+    flex: 0 0 clamp(160px, 40vw, 240px);
+    width: clamp(160px, 40vw, 240px);
+    height: auto;
+    flex-direction: column;
   }
 
-  .carousel-btn {
-    display: none; /* Ocultamos botones en móviles */
+  .card .top-section {
+    width: 100%;
+    min-width: 100%;
+    height: clamp(140px, 38vw, 200px);
   }
 
-  .carousel {
-    margin-left: 10px;
-    margin-right: 10px;
-    gap: 5px;
+  .card .bottom-section {
+    width: 100%;
+    height: auto;
+    padding: 10px 8px;
+  }
+
+  .card .bottom-section .location .loc-text {
+    font-size: 0.7rem;
+  }
+
+  .card .top-section .price-badge {
+    font-size: 0.65rem;
+    padding: 3px 5px;
   }
 }
 
-/* Celulares pequeños */
-@media (max-width: 375px) {
+@media (max-width: 430px) {
   .card {
-    flex: 0 0 100%; /* 1 tarjeta completa */
-    margin: 0 5px;
+    flex: 0 0 calc(100vw - 40px);
+    width: calc(100vw - 40px);
+    height: auto;
   }
 
-  .carousel-btn {
-    display: none; /* Ocultamos botones en móviles */
+  .card .top-section {
+    height: 200px;
   }
 
-  .carousel {
-    margin-left: 10px;
-    margin-right: 10px;
-    gap: 5px;
+  .card .bottom-section .location .loc-text {
+    font-size: 0.68rem;
+  }
+}
+
+/* Rediseno tarjeta tipo ficha (referencia) con efectos modernos */
+.card {
+  position: relative;
+  flex: 0 0 clamp(250px, 24vw, 320px);
+  width: clamp(250px, 24vw, 320px);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 18px;
+  background: var(--color-text2);
+  overflow: hidden;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.14);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, 0.03) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 34px rgba(0, 0, 0, 0.2);
+}
+
+.card .top-section {
+  width: 100%;
+  min-width: 100%;
+  height: clamp(210px, 22vw, 280px);
+  border-radius: 18px 18px 0 0;
+}
+
+.card .top-section .course-image {
+  position: relative;
+}
+
+.card .top-section .course-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 68%, rgba(0, 0, 0, 0.12) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.card .top-section .course-image img {
+  transition: transform 420ms ease;
+}
+
+.card:hover .top-section .course-image img {
+  transform: scale(1.05);
+}
+
+.card .top-section .price-badge {
+  display: none;
+}
+
+.card .bottom-section {
+  width: 100%;
+  height: auto;
+  background: var(--color-text2);
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 10px;
+  padding: 14px 14px 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.card .bottom-section .location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0;
+}
+
+.card .bottom-section .location .loc-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+}
+
+.card .bottom-section .location .loc-text {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.card .bottom-section .desc {
+  display: none;
+}
+
+.card .bottom-section .meta-row {
+  display: none;
+}
+
+.card .bottom-section .stats-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 8px;
+  margin-top: 2px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.card .bottom-section .stat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .card {
+    flex: 0 0 clamp(236px, 28vw, 292px);
+    width: clamp(236px, 28vw, 292px);
+  }
+
+  .card .top-section {
+    height: clamp(196px, 26vw, 248px);
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex: 0 0 clamp(220px, 70vw, 320px);
+    width: clamp(220px, 70vw, 320px);
+  }
+
+  .card .top-section {
+    height: clamp(188px, 54vw, 250px);
+  }
+
+  .card .bottom-section {
+    gap: 8px;
+    padding: 12px 12px 10px;
+  }
+
+  .card .bottom-section .location .loc-text {
+    font-size: 0.9rem;
+  }
+
+  .card .bottom-section .desc {
+    font-size: 0.84rem;
+  }
+
+  .card .bottom-section .stat {
+    font-size: 0.88rem;
   }
 }
