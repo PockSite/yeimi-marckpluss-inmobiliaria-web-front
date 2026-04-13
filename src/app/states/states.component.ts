@@ -2,11 +2,10 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@ang
 
 interface StatItem {
   title: string;
-  subtitle: string;
-  target: number;
-  unit: string;
+  icon: string;
+  color: string;
+  text: string;
   progressTarget: number;
-  displayValue: number;
   progress: number;
   isAnimating: boolean;
 }
@@ -16,7 +15,7 @@ interface StatItem {
   templateUrl: './states.component.html',
   styleUrls: ['./states.component.css']
 })
-export class StatesComponent {
+export class StatesComponent implements AfterViewInit, OnDestroy {
   @ViewChild('statsSection', { static: true })
   private statsSection?: ElementRef<HTMLElement>;
 
@@ -25,32 +24,29 @@ export class StatesComponent {
 
   readonly stats: StatItem[] = [
     {
-      title: 'Clientes satisfechos',
-      subtitle: 'Familias que hoy ya disfrutan de su nuevo espacio.',
-      target: 220,
-      unit: 'Clientes satisfechos',
-      progressTarget: 99,
-      displayValue: 0,
+      title: 'Buen Servicio',
+      icon: 'fas fa-hand-holding-heart',
+      color: 'var(--color-main2)',
+      text: 'Excelencia y profesionalismo.',
+      progressTarget: 100,
       progress: 0,
       isAnimating: false
     },
     {
-      title: 'Inmuebles disponibles',
-      subtitle: 'Opciones activas para compra, arriendo e inversion.',
-      target: 30,
-      unit: '# Inmuebles',
-      progressTarget: 99,
-      displayValue: 0,
+      title: 'Apoyo Integral',
+      icon: 'fas fa-users',
+      color: 'var(--color-main2)',
+      text: 'Acompañamiento completo de principio a fin.',
+      progressTarget: 100,
       progress: 0,
       isAnimating: false
     },
     {
-      title: 'Hectareas vendidas',
-      subtitle: 'Terrenos comercializados en proyectos urbanos y rurales.',
-      target: 1230,
-      unit: 'Hectáreas vendidas',
-      progressTarget: 99,
-      displayValue: 0,
+      title: 'Transparencia',
+      icon: 'fas fa-shield-alt',
+      color: 'var(--color-main2)',
+      text: 'Honestidad y confianza en cada paso',
+      progressTarget: 100,
       progress: 0,
       isAnimating: false
     }
@@ -61,23 +57,19 @@ export class StatesComponent {
   private animationTimers: number[] = [];
 
   ngAfterViewInit(): void {
-    if (!this.statsSection?.nativeElement) {
-      return;
-    }
+    if (!this.statsSection?.nativeElement) return;
 
     this.visibilityObserver = new IntersectionObserver(
       entries => {
-        for (const entry of entries) {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             this.startAnimations();
           } else {
             this.resetStats();
           }
-        }
+        });
       },
-      {
-        threshold: 0.35
-      }
+      { threshold: 0.35 }
     );
 
     this.visibilityObserver.observe(this.statsSection.nativeElement);
@@ -88,38 +80,26 @@ export class StatesComponent {
     this.clearRunningAnimations();
   }
 
-  formatValue(value: number): string {
-    return new Intl.NumberFormat('es-CO').format(value);
-  }
-
   getStrokeOffset(progress: number): number {
     return this.circumference * (1 - progress / 100);
   }
 
   private startAnimations(): void {
     this.clearRunningAnimations();
-
-    this.stats.forEach(stat => {
-      stat.displayValue = 0;
+    
+    this.stats.forEach((stat, index) => {
       stat.progress = 0;
       stat.isAnimating = true;
-    });
-
-    this.stats.forEach((_, index) => {
+      
       const timerId = window.setTimeout(() => {
         this.animateStat(index);
-      }, index * 150);
-
+      }, index * 200);
       this.animationTimers.push(timerId);
     });
   }
 
   private animateStat(index: number): void {
     const stat = this.stats[index];
-    if (!stat) {
-      return;
-    }
-
     const durationMs = 1500;
     const startTime = performance.now();
 
@@ -128,44 +108,33 @@ export class StatesComponent {
       const progress = Math.min(elapsed / durationMs, 1);
       const eased = this.easeOutCubic(progress);
 
-      stat.displayValue = Math.round(stat.target * eased);
       stat.progress = stat.progressTarget * eased;
 
       if (progress < 1) {
-        const frameId = requestAnimationFrame(step);
-        this.animationFrames.push(frameId);
-        return;
+        this.animationFrames.push(requestAnimationFrame(step));
+      } else {
+        stat.isAnimating = false;
       }
-
-      stat.displayValue = stat.target;
-      stat.progress = stat.progressTarget;
-      stat.isAnimating = false;
     };
-
-    const firstFrameId = requestAnimationFrame(step);
-    this.animationFrames.push(firstFrameId);
+    this.animationFrames.push(requestAnimationFrame(step));
   }
 
   private resetStats(): void {
     this.clearRunningAnimations();
-
     this.stats.forEach(stat => {
-      stat.displayValue = 0;
       stat.progress = 0;
       stat.isAnimating = false;
     });
   }
 
   private clearRunningAnimations(): void {
-    this.animationFrames.forEach(frameId => cancelAnimationFrame(frameId));
+    this.animationFrames.forEach(id => cancelAnimationFrame(id));
+    this.animationTimers.forEach(id => clearTimeout(id));
     this.animationFrames = [];
-
-    this.animationTimers.forEach(timerId => window.clearTimeout(timerId));
     this.animationTimers = [];
   }
 
   private easeOutCubic(value: number): number {
     return 1 - Math.pow(1 - value, 3);
   }
-
 }

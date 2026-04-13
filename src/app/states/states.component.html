@@ -1,10 +1,10 @@
-<section class="tech-section" id="tecnologias"  #statsSection>
-  <h2 class="section-title2" id="datos">Te brindamos experiencia y garantia</h2>
+<section class="tech-section" id="tecnologias" #statsSection>
+  <h2 class="section-title2">Te brindamos experiencia y garantía</h2>
 
-  <div class="stats-grid" role="list" aria-label="Estadisticas de la inmobiliaria">
+  <div class="stats-grid" role="list" aria-label="Valores de la inmobiliaria">
     <article class="stat-item" *ngFor="let stat of stats" role="listitem">
       <div class="circle-shell" [class.is-loading]="stat.isAnimating">
-        <svg class="circle-progress" viewBox="0 0 220 220" aria-hidden="true" focusable="false">
+        <svg class="circle-progress" viewBox="0 0 220 220" aria-hidden="true">
           <circle class="circle-track" cx="110" cy="110" [attr.r]="radius"></circle>
           <circle
             class="circle-meter"
@@ -13,15 +13,16 @@
             [attr.r]="radius"
             [attr.stroke-dasharray]="circumference"
             [style.stroke-dashoffset.px]="getStrokeOffset(stat.progress)"
+            [style.stroke]="stat.color"
           ></circle>
         </svg>
 
         <div class="circle-center">
-          <div class="stat-number">{{ formatValue(stat.displayValue) }}</div>
-          <div class="stat-unit">{{ stat.unit }}</div>
+          <i [class]="stat.icon" class="stat-icon"></i>
+          <h3 class="stat-title-inner">{{ stat.title }}</h3>
         </div>
       </div>
-      <p class="value-text">{{ stat.subtitle }}</p>
+      <p class="value-text">{{ stat.text }}</p>
     </article>
   </div>
 </section>

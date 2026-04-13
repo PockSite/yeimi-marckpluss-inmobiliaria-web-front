@@ -8,7 +8,6 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  margin-top: -50px;
 }
 
 .carousel {
@@ -204,7 +203,7 @@ button:active .button-text {
   align-items: stretch;
   gap: 0;
   margin: 0 12px;
-  height: 150px;
+  height: 20px;
   border-radius: 12px;
   background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.02));
   padding: 0;
@@ -224,9 +223,9 @@ button:active .button-text {
 }
 
 .card .top-section {
-  width: 45%;
-  min-width: 45%;
-  height: 100%;
+  width: 100%;
+  min-width: 100%;
+  height: 45%;
   position: relative;
   overflow: hidden;
 }
@@ -286,7 +285,7 @@ button:active .button-text {
   text-align: center;
   color: var(--color-text2);
   font-family: var(--font-subtitle);
-  font-size: 0.85rem;
+  font-size: 0.4rem;
   background: linear-gradient(130deg, rgba(20, 35, 56, 0.72), rgba(17, 28, 44, 0.86));
   z-index: 1;
 }
@@ -743,310 +742,122 @@ button:active .button-text {
   }
 }
 
-/* Vista compacta: 4 cards visibles en desktop, solo imagen + precio + ubicación */
-.card {
-  flex: 0 0 clamp(240px, 23vw, 280px);
-  width: clamp(240px, 23vw, 280px);
-  height: auto;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 0;
-  min-height: 100%;
-}
-
-.card .top-section {
-  width: 100%;
-  min-width: 100%;
-  height: clamp(180px, 23vw, 220px);
-}
-
-.card .bottom-section {
-  width: 100%;
-  height: auto;
-  padding: 12px 10px;
-  justify-content: flex-start;
-  gap: 4px;
-}
-
-.card .bottom-section .title,
-.card .bottom-section .desc,
-.card .bottom-section .meta-row,
-.card .bottom-section .stats-row {
-  display: none;
-}
-
-.card .bottom-section .location {
-  align-items: flex-start;
-  gap: 4px;
-  margin-top: 0;
-  font-size: 0.75rem;
-}
-
-.card .bottom-section .location .loc-icon {
-  width: 18px;
-  height: 18px;
-  min-width: 18px;
-}
-
-.card .bottom-section .location .loc-text {
-  font-size: 0.75rem;
-  line-height: 1.05;
-  font-weight: 500;
-}
-
-.card .top-section .price-badge {
-  font-size: 0.75rem;
-  padding: 4px 7px;
-  right: 6px;
-  top: 6px;
-  border-radius: 6px;
-}
-
-.card .top-section .course-image img {
-  object-fit: cover;
-}
-
-@media (min-width: 1440px) {
-  .carousel {
-    margin-left: 54px;
-    margin-right: 54px;
-  }
-
-  .card {
-    flex-basis: calc((100% - 72px) / 4);
-    width: calc((100% - 72px) / 4);
-    max-width: 310px;
-    height: auto;
-  }
-
-  .card .top-section {
-    height: 220px;
-  }
-}
-
-@media (max-width: 1380px) {
-  .card {
-    flex: 0 0 clamp(220px, 25vw, 290px);
-    width: clamp(220px, 25vw, 290px);
-  }
-
-  .card .top-section {
-    height: clamp(160px, 22vw, 210px);
-  }
-}
-
-@media (max-width: 1024px) {
-  .card {
-    flex: 0 0 clamp(200px, 27vw, 270px);
-    width: clamp(200px, 27vw, 270px);
-  }
-
-  .card .top-section {
-    height: clamp(150px, 24vw, 200px);
-  }
-}
-
-@media (max-width: 768px) {
-  .card {
-    flex: 0 0 clamp(160px, 40vw, 240px);
-    width: clamp(160px, 40vw, 240px);
-    height: auto;
-    flex-direction: column;
-  }
-
-  .card .top-section {
-    width: 100%;
-    min-width: 100%;
-    height: clamp(140px, 38vw, 200px);
-  }
-
-  .card .bottom-section {
-    width: 100%;
-    height: auto;
-    padding: 10px 8px;
-  }
-
-  .card .bottom-section .location .loc-text {
-    font-size: 0.7rem;
-  }
-
-  .card .top-section .price-badge {
-    font-size: 0.65rem;
-    padding: 3px 5px;
-  }
-}
-
-@media (max-width: 430px) {
-  .card {
-    flex: 0 0 calc(100vw - 40px);
-    width: calc(100vw - 40px);
-    height: auto;
-  }
-
-  .card .top-section {
-    height: 200px;
-  }
-
-  .card .bottom-section .location .loc-text {
-    font-size: 0.68rem;
-  }
-}
-
-/* Rediseno tarjeta tipo ficha (referencia) con efectos modernos */
+/* === 1. ESTRUCTURA DE LA CARD === */
 .card {
   position: relative;
-  flex: 0 0 clamp(250px, 24vw, 320px);
-  width: clamp(250px, 24vw, 320px);
+  /* Ajustamos a 4.5 o 5 para que se vean más pequeñas y sugiera scroll */
+  flex: 0 0 calc((100% - 80px) / 4.2); 
+  width: calc((100% - 80px) / 4.2);
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  border-radius: 18px;
-  background: var(--color-text2);
+  border-radius: 18px; /* Bordes más redondeados como en tu imagen */
+  background: #fff;
   overflow: hidden;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.14);
-  transition: transform 300ms ease, box-shadow 300ms ease;
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, 0.03) 100%);
-  pointer-events: none;
-  z-index: 1;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  height: auto;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 34px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
 }
 
+/* === 2. SECCIÓN SUPERIOR (IMAGEN) === */
 .card .top-section {
   width: 100%;
-  min-width: 100%;
-  height: clamp(210px, 22vw, 280px);
-  border-radius: 18px 18px 0 0;
-}
-
-.card .top-section .course-image {
+  aspect-ratio: 1 / 1; /* Imagen cuadrada para que sea más pequeña verticalmente */
   position: relative;
 }
 
-.card .top-section .course-image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 68%, rgba(0, 0, 0, 0.12) 100%);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.card .top-section .course-image img {
-  transition: transform 420ms ease;
-}
-
-.card:hover .top-section .course-image img {
-  transform: scale(1.05);
+.card .top-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .card .top-section .price-badge {
-  display: none;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
 }
 
+/* === 3. SECCIÓN INFERIOR (ANCHO COMPLETO) === */
 .card .bottom-section {
-  width: 100%;
-  height: auto;
-  background: var(--color-text2);
-  display: grid;
-  grid-template-rows: auto auto auto;
-  gap: 10px;
-  padding: 14px 14px 12px;
-  position: relative;
-  z-index: 2;
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  padding: 12px 15px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box; /* Crucial para que el padding no rompa el ancho */
+  background: #f9f9f9; /* Un gris muy ligero para diferenciar del fondo */
 }
 
 .card .bottom-section .location {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 0;
-}
-
-.card .bottom-section .location .loc-icon {
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
+  width: 100%; 
 }
 
 .card .bottom-section .location .loc-text {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  line-height: 1.2;
-  color: var(--color-text);
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1; /* Toma todo el espacio disponible */
 }
 
-.card .bottom-section .desc {
-  display: none;
+/* Línea divisoria suave */
+.card .bottom-section::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(0,0,0,0.05);
+  margin-bottom: 10px;
 }
 
-.card .bottom-section .meta-row {
-  display: none;
-}
-
+/* STATS (Iconos de Cama y Baño) */
 .card .bottom-section .stats-row {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  gap: 8px;
-  margin-top: 2px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  align-items: center;
 }
 
 .card .bottom-section .stat {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 6px;
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #444;
 }
 
+.card .bottom-section .stat i {
+  color: #881d33; /* Color vino/tinto de los iconos */
+  font-size: 1.1rem;
+}
+
+/* === 4. RESPONSIVE === */
 @media (max-width: 1024px) {
   .card {
-    flex: 0 0 clamp(236px, 28vw, 292px);
-    width: clamp(236px, 28vw, 292px);
-  }
-
-  .card .top-section {
-    height: clamp(196px, 26vw, 248px);
+    flex: 0 0 calc((100% - 40px) / 3.2);
+    width: calc((100% - 40px) / 3.2);
   }
 }
 
 @media (max-width: 768px) {
   .card {
-    flex: 0 0 clamp(220px, 70vw, 320px);
-    width: clamp(220px, 70vw, 320px);
-  }
-
-  .card .top-section {
-    height: clamp(188px, 54vw, 250px);
-  }
-
-  .card .bottom-section {
-    gap: 8px;
-    padding: 12px 12px 10px;
-  }
-
-  .card .bottom-section .location .loc-text {
-    font-size: 0.9rem;
-  }
-
-  .card .bottom-section .desc {
-    font-size: 0.84rem;
-  }
-
-  .card .bottom-section .stat {
-    font-size: 0.88rem;
+    flex: 0 0 calc((100% - 20px) / 2.2);
+    width: calc((100% - 20px) / 2.2);
   }
 }
