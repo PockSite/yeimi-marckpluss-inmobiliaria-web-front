@@ -8,6 +8,7 @@ import { DomusService } from '../core/service/domus.service';
 })
 export class CursosComponent implements OnInit, OnDestroy, AfterViewInit {
   estate: any[] = [];
+  isLoadingProperties = true;
 
   socialLinks = [
     { icon: 'fab fa-whatsapp', url: 'https://wa.me/573204795284', network: 'social-whatsapp' },
@@ -64,12 +65,19 @@ export class CursosComponent implements OnInit, OnDestroy, AfterViewInit {
           rooms: p.bedrooms,
           baths: p.bathrooms
         }));
-        this.setupSlides();
+        this.isLoadingProperties = false;
+        // El carrusel se renderiza al ocultarse el loader: recalculamos tras el render
+        setTimeout(() => {
+          this.calculateCardWidth();
+          this.setupSlides();
+          this.updateTranslate(false);
+        }, 0);
       },
       error: (error) => {
         console.error('Error al obtener propiedades:', error);
         this.estate = [];
         this.slides = [];
+        this.isLoadingProperties = false;
       }
     });
   }
@@ -96,6 +104,7 @@ export class CursosComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   nextSlide(): void {
+    if (this.isLoadingProperties || this.slides.length === 0) return;
     if (this.isTransitioning) return;
     this.isTransitioning = true;
     this.currentIndex++;
@@ -103,6 +112,7 @@ export class CursosComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   prevSlide(): void {
+    if (this.isLoadingProperties || this.slides.length === 0) return;
     if (this.isTransitioning) return;
     this.isTransitioning = true;
     this.currentIndex--;
@@ -272,6 +282,7 @@ export class CursosComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   private setupSlides(): void {
+    this.isTransitioning = false;
     const v = this.visibleCards;
     const c = this.estate.length;
 

@@ -1,7 +1,7 @@
 /* === SECCION ESTADISTICAS / VALORES === */
 .tech-section {
   text-align: center;
-  padding: 80px 22px;
+  padding: clamp(52px, 8vw, 80px) clamp(16px, 4vw, 22px);
   background:
     radial-gradient(circle at 50% -10%, rgba(105, 20, 32, 0.06), transparent 55%),
     linear-gradient(180deg, #ffffff 0%, #f7f3f4 100%);
@@ -29,10 +29,10 @@
 
 .section-title2 {
   font-family: var(--font-title);
-  font-size: 2.1rem;
+  font-size: clamp(1.45rem, 4.4vw, 2.1rem);
   font-weight: 900;
   color: var(--color-main);
-  margin: 0 auto 56px;
+  margin: 0 auto clamp(38px, 6vw, 56px);
   max-width: 640px;
   line-height: 1.2;
   letter-spacing: 0.5px;
@@ -54,9 +54,10 @@
   max-width: 1180px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, minmax(220px, 1fr));
-  gap: 36px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(30px, 4vw, 36px);
   align-items: start;
+  justify-items: center;
 }
 
 .stat-item {
@@ -72,8 +73,11 @@
 .stat-item:nth-child(3) { animation-delay: 0.24s; }
 
 .circle-shell {
-  width: 240px;
-  height: 240px;
+  /* Tamano fluido: todo lo de adentro se calcula a partir de esta medida */
+  --shell-size: clamp(180px, 22vw + 40px, 240px);
+  width: var(--shell-size);
+  height: var(--shell-size);
+  max-width: 100%;
   position: relative;
   display: grid;
   place-items: center;
@@ -101,7 +105,7 @@
 
 .circle-center {
   position: absolute;
-  inset: 38px;
+  inset: 15.5%;
   border-radius: 50%;
   background:
     radial-gradient(circle at 36% 30%, #ffffff 0%, #fbf7f7 70%, #f3eaeb 100%);
@@ -112,14 +116,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 18px;
+  gap: calc(var(--shell-size) * 0.04);
+  padding: 8%;
   text-align: center;
+  overflow: hidden;
 }
 
 .stat-icon {
-  font-size: 2.8rem;
+  font-size: calc(var(--shell-size) * 0.15);
+  line-height: 1;
   color: var(--color-main2);
-  margin-bottom: 12px;
   filter: drop-shadow(0 4px 8px rgba(105, 20, 32, 0.25));
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -130,21 +136,29 @@
 
 .stat-title-inner {
   font-family: var(--font-subtitle);
-  font-size: 0.82rem;
+  font-size: max(0.63rem, calc(var(--shell-size) * 0.05));
   font-weight: 800;
   color: var(--color-main);
   text-transform: uppercase;
   margin: 0;
   line-height: 1.25;
-  letter-spacing: 1px;
+  letter-spacing: 0.06em;
+  /* Reserva el alto de 2 lineas para que los 3 circulos queden identicos */
+  min-height: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .value-text {
-  max-width: 260px;
+  max-width: min(280px, 100%);
   font-family: var(--font-text);
-  font-size: 0.98rem;
+  font-size: clamp(0.88rem, 2.6vw, 0.98rem);
   color: var(--color-text);
-  margin-top: 24px;
+  margin-top: clamp(18px, 2.5vw, 24px);
+  text-wrap: balance;
   text-align: center;
   line-height: 1.5;
 }
@@ -169,9 +183,29 @@
   }
 }
 
-@media (max-width: 768px) {
-  .stats-grid { grid-template-columns: 1fr; gap: 48px; }
-  .circle-shell { width: 220px; height: 220px; }
-  .stat-icon { font-size: 2.3rem; }
-  .section-title2 { font-size: 1.7rem; }
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(30px, 5vw, 44px);
+  }
+
+  /* La tercera tarjeta queda centrada bajo las dos primeras */
+  .stat-item:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 620px) {
+  .stats-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .stat-item:nth-child(3) {
+    grid-column: auto;
+  }
+
+  .circle-shell {
+    --shell-size: clamp(178px, 62vw, 230px);
+  }
 }

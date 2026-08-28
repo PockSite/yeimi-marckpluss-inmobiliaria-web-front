@@ -96,11 +96,11 @@
     </section>
 
     <!-- RESULTADOS: TARJETAS DE PROPIEDADES -->
-    <section class="skills-section">
+    <section class="skills-section" [class.is-loading]="isLoadingProperties">
       <div class="properties-loading" *ngIf="isLoadingProperties" role="status" aria-live="polite">
         <div class="properties-loading-inner">
-          <span class="properties-loading-spinner" aria-hidden="true"></span>
-          <p>Cargando inmuebles...</p>
+          <div class="loader" aria-hidden="true"></div>
+          <p class="loading-text">Cargando<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span></p>
         </div>
       </div>
 
@@ -160,7 +160,7 @@
         </div>
 
       </div>
-      <div class="pagination">
+      <div class="pagination" *ngIf="!isLoadingProperties">
         <button (click)="prevPage()" [disabled]="page === 1">
           <i class="fas fa-chevron-left"></i>
         </button>
