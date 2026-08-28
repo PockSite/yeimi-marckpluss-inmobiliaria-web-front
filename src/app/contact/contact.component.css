@@ -19,15 +19,6 @@
   position: relative;
 }
 
-.section-title2::after {
-  content: '';
-  display: block;
-  width: 72px;
-  height: 4px;
-  margin: 18px auto 0;
-  border-radius: 4px;
-  background: linear-gradient(90deg, var(--color-main2), var(--color-main3));
-}
 
 .contact-container {
   max-width: 1200px;
