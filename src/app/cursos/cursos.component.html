@@ -8,6 +8,16 @@
     </a>
   </div>
 
+  <!-- LOADER MIENTRAS SE CARGAN LOS INMUEBLES -->
+  <div class="courses-loading" *ngIf="isLoadingProperties" role="status" aria-live="polite">
+    <div class="courses-loading-inner">
+      <div class="loader" aria-hidden="true"></div>
+      <p class="loading-text">Cargando<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span></p>
+    </div>
+  </div>
+
+  <ng-container *ngIf="!isLoadingProperties">
+
   <button class="carousel-btn left" (click)="prevSlide()">
     <div class="arrow">
       <div class="arrow-top"></div>
@@ -99,5 +109,7 @@
       <div class="arrow-bottom"></div>
     </div>
   </button>
+
+  </ng-container>
 
 </div>

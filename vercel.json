@@ -1,0 +1,60 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "routes": [
+    { "src": "/(index\\.html)?", "headers": { "Vary": "Accept, Accept-Encoding" }, "continue": true },
+    { "src": "/(about|contact|privacy)/?", "headers": { "Vary": "Accept, Accept-Encoding" }, "continue": true },
+    {
+      "src": "/(index|about|contact|privacy|404)\\.md",
+      "headers": { "Vary": "Accept, Accept-Encoding", "Content-Type": "text/markdown; charset=utf-8" },
+      "continue": true
+    },
+    { "src": "/(llms\\.txt|agents\\.md|robots\\.txt|sitemap\\.xml)", "headers": { "Cache-Control": "public, max-age=0, must-revalidate" }, "continue": true },
+
+    {
+      "src": "/(index\\.html)?",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "dest": "/index.md",
+      "headers": { "Vary": "Accept, Accept-Encoding", "Content-Type": "text/markdown; charset=utf-8" }
+    },
+    {
+      "src": "/about/?",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "dest": "/about.md",
+      "headers": { "Vary": "Accept, Accept-Encoding", "Content-Type": "text/markdown; charset=utf-8" }
+    },
+    {
+      "src": "/contact/?",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "dest": "/contact.md",
+      "headers": { "Vary": "Accept, Accept-Encoding", "Content-Type": "text/markdown; charset=utf-8" }
+    },
+    {
+      "src": "/privacy/?",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "dest": "/privacy.md",
+      "headers": { "Vary": "Accept, Accept-Encoding", "Content-Type": "text/markdown; charset=utf-8" }
+    },
+
+    { "handle": "filesystem" },
+
+    { "src": "/about/?", "dest": "/about.html" },
+    { "src": "/contact/?", "dest": "/contact.html" },
+    { "src": "/privacy/?", "dest": "/privacy.html" },
+
+    { "src": "/propiedad/[^/]+/?", "dest": "/index.html" },
+
+    {
+      "src": "/(.*)",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "status": 404,
+      "dest": "/404.md",
+      "headers": { "Vary": "Accept, Accept-Encoding", "Content-Type": "text/markdown; charset=utf-8" }
+    },
+    {
+      "src": "/(.*)",
+      "status": 404,
+      "dest": "/404.html",
+      "headers": { "Vary": "Accept, Accept-Encoding" }
+    }
+  ]
+}

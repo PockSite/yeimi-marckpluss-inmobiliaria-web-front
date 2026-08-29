@@ -30,12 +30,21 @@ Dependency & build specifics
 - Angular CLI/tooling versions are specified in `package.json`. Typescript ~5.1, Angular 16.2.x, `@angular/cli` ~16.2.16.
 - `angular.json` defines a `development` build configuration with `sourceMap: true` and a `production` configuration with `outputHashing: all`.
 
+SEO / GEO layer (static, outside the SPA)
+- `public/` is copied verbatim to the build root by `angular.json` (`{ "glob": "**/*", "input": "public", "output": "/" }`). It holds `robots.txt`, `sitemap.xml`, `llms.txt`, `agents.md`, the trust pages `about|contact|privacy.html`, the `404.html` page, their `.md` mirrors and the shared `marckpluss-docs.css`.
+- `src/index.html` carries the canonical URL, Open Graph/Twitter tags, the `@graph` JSON-LD block (Organization/RealEstateAgent + WebSite + WebPage) and a pre-boot block inside `<app-root>`. Angular clears that block when it bootstraps, so it doubles as branded loading screen and as the only content non-JS crawlers can read. Keep it above 500 characters of text and never hide it with CSS.
+- `vercel.json` owns routing: markdown content negotiation before the filesystem phase, clean URLs for the trust pages, the `/propiedad/:id` SPA rewrite and a catch-all that returns a real HTTP 404. Its routes are merged ahead of the Angular preset's `/(.*) -> /index.html`, which is what stops the soft-404s. `nginx.conf` mirrors the same rules for the Docker deploy.
+- Any new SPA route must be added to `vercel.json` and `nginx.conf` as well, or it will 404.
+
 Testing & quality
 - Unit tests use Karma + Jasmine. Tests live next to components as `*.component.spec.ts` files. Run `npm test` to execute.
+- `npm run test:geo` (Node test runner, no browser) covers the metadata, JSON-LD, trust pages, `llms.txt`, `sitemap.xml`, the 404 page and the routing rules, including a simulation of the Vercel route table against `dist/my-landing`. Run `npm run build` first so the simulation is not skipped.
+- `npm run verify:endpoints [origin]` checks a live deployment: status codes, content types, `Vary: Accept` and markdown negotiation.
+- `npm run sitemap` regenerates `public/sitemap.xml` from the Domus API. Commit the result; it is not part of `ng build`.
 - There are no linting or formatting tools configured in the repo; do not add formatting assumptions unless requested.
 
 What to avoid
-- Do not modify `index.html` or `main.ts` unless you have to—these bootstrapping files follow Angular CLI defaults.
+- Do not modify `main.ts` unless you have to—this bootstrapping file follows Angular CLI defaults. `src/index.html` now carries SEO/GEO metadata: edit it deliberately and re-run `npm run test:geo`.
 - Avoid adding global CSS rules that break component encapsulation; prefer per-component styles unless you need app-wide theming.
 
 Where to change common behavior

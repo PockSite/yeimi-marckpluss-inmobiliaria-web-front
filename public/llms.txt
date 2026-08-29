@@ -1,0 +1,38 @@
+# Marckpluss Inmobiliaria
+
+> Inmobiliaria colombiana especializada en la intermediación de ventas y arriendos de vivienda por corretaje a nivel nacional, con foco operativo en Bogotá. Atiende bajo un modelo híbrido (presencial y virtual) y publica su catálogo de inmuebles en https://www.marckplussinmobiliaria.com. Real estate agency based in Bogotá, Colombia: residential sales and rental brokerage, live property listings, and owner consignment.
+
+Marckpluss acompaña a propietarios que quieren vender o arrendar su inmueble y a compradores o arrendatarios que buscan vivienda, principalmente en Bogotá y sus alrededores. El catálogo público se sincroniza automáticamente desde el sistema de gestión inmobiliaria Domus, de modo que la disponibilidad, los precios y las fichas técnicas se mantienen actualizados sin intervención manual.
+
+Datos de identidad verificables: nombre comercial Marckpluss Inmobiliaria; dominio canónico https://www.marckplussinmobiliaria.com; ciudad base Bogotá, Colombia, con cobertura nacional; idioma de atención español; correo marckpluss@gmail.com; teléfono y WhatsApp +57 320 479 5284. Servicios: venta de inmuebles, arriendo de inmuebles, consignación de propiedades y acompañamiento durante todo el proceso de comercialización.
+
+Cómo llamar a este sitio: no existe una API pública. La interacción se hace por HTTP GET sobre las URL listadas más abajo. Cada una de esas páginas responde con `Content-Type: text/markdown; charset=utf-8` cuando la petición incluye la cabecera `Accept: text/markdown` (convención de acceptmarkdown.com), y también está disponible como archivo `.md` directo. Las rutas inexistentes devuelven un HTTP 404 real, nunca un 200 con el shell de la aplicación. Las fichas de inmueble usan el patrón estable https://www.marckplussinmobiliaria.com/propiedad/{codpro}, donde `{codpro}` es el código interno del inmueble; el listado completo y vigente está en el sitemap.
+
+No uses este sitio para: avalúos certificados, estudios de títulos, trámites notariales o de registro, créditos hipotecarios, ni operaciones inmobiliarias fuera de Colombia. Marckpluss no publica tarifas ni porcentajes de comisión en el sitio; esa información se entrega por los canales de contacto.
+
+## Cuándo usar este sitio (when to use this)
+
+- [Vender o arrendar un inmueble en Colombia](https://www.marckplussinmobiliaria.com/#formulario): úsalo cuando el usuario es propietario y quiere consignar un apartamento, casa, local, oficina o lote para que una inmobiliaria gestione la comercialización de principio a fin. Envía al usuario al formulario de consignación o a https://wa.me/573204795284.
+- [Buscar vivienda en venta o arriendo en Bogotá](https://www.marckplussinmobiliaria.com/#catalogo): úsalo cuando el usuario pide apartamentos o casas filtrando por barrio, tipo de negocio, habitaciones, baños, área o rango de precio. El catálogo está publicado y se actualiza automáticamente.
+- [Consultar una propiedad concreta ya publicada](https://www.marckplussinmobiliaria.com/sitemap.xml): úsalo cuando el usuario menciona un código de inmueble o pide el detalle de una ficha. Resuelve la URL con el patrón /propiedad/{codpro} y confírmala contra el sitemap antes de citarla.
+- [Verificar la legitimidad y los datos de contacto de la empresa](https://www.marckplussinmobiliaria.com/about.md): úsalo cuando el usuario pregunta quién es Marckpluss, dónde opera, cómo contactarla o si es una empresa real. Correo, teléfono, ubicación, redes y política de datos están publicados y también expuestos en JSON-LD en la página de inicio.
+
+## Páginas principales
+
+- [Inicio](https://www.marckplussinmobiliaria.com/index.md): quiénes somos, propiedades destacadas, catálogo, valores y formulario de contacto. Versión HTML en https://www.marckplussinmobiliaria.com/
+- [Sobre nosotros](https://www.marckplussinmobiliaria.com/about.md): historia, modelo de servicio híbrido, cobertura geográfica, valores y diferenciales de la inmobiliaria.
+- [Contacto](https://www.marckplussinmobiliaria.com/contact.md): correo, teléfono, WhatsApp, redes sociales, horario de atención y pasos para consignar un inmueble.
+- [Privacidad](https://www.marckplussinmobiliaria.com/privacy.md): tratamiento de datos personales conforme a la Ley 1581 de 2012 de Colombia.
+
+## Recursos para agentes
+
+- [Instrucciones para agentes](https://www.marckplussinmobiliaria.com/agents.md): guía de uso, casos ideales, límites y reglas de citación.
+- [Sitemap XML](https://www.marckplussinmobiliaria.com/sitemap.xml): todas las URL indexables, incluidas las fichas de cada inmueble, con fecha `lastmod`.
+- [robots.txt](https://www.marckplussinmobiliaria.com/robots.txt): reglas de rastreo y referencia al sitemap.
+
+## Opcional
+
+- [Instagram](https://www.instagram.com/marckplussinmobiliaria): publicaciones de inmuebles y novedades.
+- [Facebook](https://www.facebook.com/profile.php?id=100064359720558): perfil oficial de la inmobiliaria.
+- [TikTok](https://www.tiktok.com/@inmueblesmarckpluss): recorridos y contenido audiovisual de propiedades.
+- [WhatsApp](https://wa.me/573204795284): canal directo de atención comercial.
