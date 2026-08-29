@@ -14,7 +14,10 @@
     "backend:dev": "nodemon app.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "test:geo": "node --test scripts/geo.test.mjs",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "verify:endpoints": "node scripts/verify-endpoints.mjs"
   },
   "dependencies": {
     "@angular/animations": "^16.2.0",

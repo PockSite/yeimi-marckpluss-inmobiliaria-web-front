@@ -1,0 +1,12 @@
+# robots.txt - Marckpluss Inmobiliaria
+# https://www.marckplussinmobiliaria.com
+
+User-agent: *
+Allow: /
+Disallow: /*.map$
+
+# Agentes de IA / AI agents: contexto legible por maquina
+# /llms.txt  -> indice y guia de uso (llmstxt.org)
+# /agents.md -> instrucciones para agentes
+
+Sitemap: https://www.marckplussinmobiliaria.com/sitemap.xml
